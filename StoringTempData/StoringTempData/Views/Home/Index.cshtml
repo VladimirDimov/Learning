@@ -1,0 +1,16 @@
+﻿@using StoringTempData.Controllers
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    var people = this.TempData["People"] as Person[];
+    this.TempData["People"] = people;
+}
+
+@using (Html.BeginForm("SavePeople", "Home"))
+{
+    @Html.EditorFor(m => people[0].Name)
+    <input type="submit" value="Save" />
+}
