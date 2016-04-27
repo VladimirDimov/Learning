@@ -1,24 +1,19 @@
-﻿using MailClient.Client;
-using MailClient.Smtp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MailClient
+﻿namespace MailClient
 {
-    class Program
+    using MailClient.Client;
+    using MailClient.Smtp;
+    using System;
+
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
-            SendMail();
             Console.WriteLine("Sending mail");
+            SendMailAsync();
             Console.ReadLine();
         }
 
-        private async static void SendMail()
+        private async static void SendMailAsync()
         {
             var settings = new SmtpSettings();
             settings.Host = "smtp-pulse.com";
@@ -28,8 +23,16 @@ namespace MailClient
 
             var client = new SmtpMailSender(settings);
 
-            var result = await client.SendAsync(new string[] { "register2016@abv.bg" }, "register2016@abv.bg", "test", "test body");
-            Console.WriteLine(result);
+            var result = await client.SendAsync(new string[] { "vladimir.dimov@codeo.co.il" }, "register2016@abv.bg", "test", "test body");
+
+            if (result.Success != null)
+            {
+                Console.WriteLine($"Success: {result.Success}");
+            }
+            else
+            {
+                Console.WriteLine($"Error: {result.Error}");
+            }
         }
     }
 }
