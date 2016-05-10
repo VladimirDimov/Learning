@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ObjectManager
+﻿namespace ObjectManager
 {
+    using System.Collections.Generic;
+
     public class ObjectManager<T>
     {
         private T obj;
@@ -18,7 +14,11 @@ namespace ObjectManager
         public IDictionary<string, string> GetPropertiesMap()
         {
             var propertiesMap = new Dictionary<string, string>();
-            var propertyInfo = obj.GetType().GetProperties();
+        }
+
+        private IDictionary<string, string> GetPropertiesMapRecursively(object subObject, IDictionary<string, string> propertiesMap)
+        {
+
         }
     }
 }
