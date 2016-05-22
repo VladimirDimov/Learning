@@ -1,0 +1,21 @@
+li:visited {
+	text-decoration: underline;
+	cursor: pointer;
+	background-color: gray;
+}
+
+li:hover:before {
+	content: ">>"
+}
+
+li {
+	list-style-type: none;
+}
+
+li:nth-child(2n - 1) {
+	background-color: red;
+}
+
+span~a {
+	background-color: red;
+}

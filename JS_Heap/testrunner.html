@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=>
+    <meta http-equiv=c ontent=>
+    <title>
+
+    </title>
+    <link rel=h ref=>
+</head>
+
+<body>
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script>
+        mocha.setup('bdd')
+    </script>
+
+    <!-- load code you want to test here -->
+    <script src="heap.js"></script>
+
+    <!-- load your test files here -->
+    <script src="tests.js"></script>
+    <script>
+        mocha.run();
+    </script>
+</body>
+
+</html>
