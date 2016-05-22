@@ -1,6 +1,7 @@
 ﻿using MailClient.Client;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -22,20 +23,35 @@ namespace MailClient.Smtp
             client.Port = settings.Port;
             client.EnableSsl = settings.EnableSSL;
             client.Credentials = new NetworkCredential(settings.Credentials.Username, settings.Credentials.Password);
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
         }
 
-        public void Send(string[] to, string from, string subject, string body)
+        public SendMailResult Send(string[] to, string from, string subject, string body)
         {
             MailMessage message = this.CreateMailMessage(to, from, subject, body);
-            this.client.Send(message);
+
+            try
+            {
+                this.client.Send(message);
+            }
+            catch (Exception ex)
+            {
+                return new SendMailResult { Error = ex.Message };
+            }
+            finally
+            {
+                this.client.Dispose();
+                message.Dispose();
+            }
+
+            return new SendMailResult { Success = "Message successfully sent" };
         }
 
-        public Task<string> SendAsync(string[] to, string from, string subject, string body)
+        public Task<SendMailResult> SendAsync(string[] to, string from, string subject, string body)
         {
             return Task.Factory.StartNew(() =>
             {
-                this.Send(to, from, subject, body);
-                return "success";
+                return this.Send(to, from, subject, body);
             });
         }
 
