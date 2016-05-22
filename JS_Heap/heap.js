@@ -3,15 +3,15 @@ var heap = (function () {
 
     var heap = {
         init: function (comparator) {
-            if(comparator == null || comparator == 'undefined') {
+            if (comparator == null || comparator == 'undefined') {
                 throw new Error('You should provide a comparator!');
             }
-            
-            if(typeof comparator != 'function') {
+
+            if (typeof comparator != 'function') {
                 throw new Error('The comparator type must be a function');
             }
-            
-            this.elements = [];
+
+            this._elements = [];
             this.comparator = comparator;
 
             return this;
@@ -21,19 +21,19 @@ var heap = (function () {
             return this._elements;
         },
 
-        set elements(value) {
-            this._elements = value;
-        },
-        
         get comparator() {
             return this._comparator;
         },
-        
+
         set comparator(value) {
-            this._comparator = value; 
+            this._comparator = value;
         },
 
         pop: function () {
+            if (this._elements.length == 0) {
+                throw new Error('The heap is empty!');
+            }
+
             var result = this._elements[0];
 
             if (this._elements.length > 1) {
@@ -57,7 +57,7 @@ var heap = (function () {
 
         var left = Math.floor((right - 1) / 2);
 
-        if (heap.comparator(heap.elements[right], heap.elements[left])) { // heap.elements[right] > heap.elements[left]
+        if (!heap.comparator(heap.elements[right], heap.elements[left])) { // heap.elements[right] > heap.elements[left]
             flip(right, left);
             updateElements(left);
         }
@@ -65,20 +65,22 @@ var heap = (function () {
 
     function updateAfterPop(left) {
         var indexOfBigger;
-        if (left * 2 + 1 >= heap.elements.length - 1) return;
+        if (left * 2 + 1 > heap.elements.length - 1) return;
 
         indexOfBigger = getIndexOfBigger.call(heap, 2 * left + 1, 2 * left + 2);
-        if (heap.comparator(heap.elements[indexOfBigger], heap.elements[left])) { // heap.elements[left] < heap.elements[indexOfBigger]
+        if (!heap.comparator(heap.elements[indexOfBigger], heap.elements[left])) { // heap.elements[left] < heap.elements[indexOfBigger]
             flip(left, indexOfBigger);
             updateAfterPop(indexOfBigger);
         }
     }
 
     function getIndexOfBigger(left, right) {
+        if (right > this._elements.length - 1) return left;
+        
         var leftValue = this.elements[left];
         var rightValue = this.elements[right];
 
-        if (this.comparator(heap.elements[right], heap.elements[left])) return right; // this.elements[right] > this.elements[left]
+        if (!this.comparator(this._elements[right], this._elements[left])) return right; // this.elements[right] > this.elements[left]
 
         return left;
     }
