@@ -10,10 +10,6 @@ function getEmptyHeap() {
 
 describe('heap.elements', function () {
 
-    it('test', function () {
-        expect(true).to.be.true;
-    });
-
     it('should return empty array after init', function () {
         var x = heap.init(function (right, left) {
             return right < left;
