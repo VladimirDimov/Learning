@@ -1,18 +1,42 @@
 var mergeSorter = (function () {
     'use strict';
+
     return {
-        sort: function (arr) {
-            merge(arr, 0, arr.length - 1);
+        sort: function (arr, comparator) {
+            merge(arr, 0, arr.length - 1, getComparator(comparator));
         }
     };
 
-    function merge(arr, left, right) {
+    function getComparator(comparator) {
+        if (!comparator) return ascendingComparator;
+        if (typeof comparator == 'function') return comparator;
+        if (typeof comparator == 'string') {
+            switch (comparator) {
+                case 'asc':
+                    return ascendingComparator;
+                case 'desc':
+                    return descendingComparator;
+                default:
+                    throw new Error('Invalid comparator name');
+            }
+        }
+    }
+
+    function ascendingComparator(left, right) {
+        return left < right;
+    }
+
+    function descendingComparator(left, right) {
+        return left < right;
+    }
+
+    function merge(arr, left, right, comparator) {
         if (left == right) {
             return;
         } else {
-            var l = merge(arr, left, left + Math.floor((right - left) / 2));
-            var r = merge(arr, left + Math.floor((right - left) / 2) + 1, right);
-            sort(arr, left, left + Math.floor((right - left) / 2), left + Math.floor((right - left) / 2) + 1, right);
+            var l = merge(arr, left, left + Math.floor((right - left) / 2), comparator);
+            var r = merge(arr, left + Math.floor((right - left) / 2) + 1, right, comparator);
+            sort(arr, left, left + Math.floor((right - left) / 2), left + Math.floor((right - left) / 2) + 1, right, comparator);
         }
     }
 
@@ -22,14 +46,14 @@ var mergeSorter = (function () {
         arr[right] = tmp;
     }
 
-    function sort(arr, l, lm, rm, r) {
+    function sort(arr, l, lm, rm, r, comparator) {
         var sortedSubArray = [];
         var lArr = arr.slice(l, lm + 1);
         var rArr = arr.slice(rm, r + 1);
 
         while (lArr[0] || rArr[0]) {
             if (lArr[0] && rArr[0]) {
-                if (lArr[0] < rArr[0]) {
+                if (comparator(lArr[0], rArr[0])) {
                     sortedSubArray.push(lArr.shift());
                 } else {
                     sortedSubArray.push(rArr.shift());
@@ -45,11 +69,5 @@ var mergeSorter = (function () {
         var spliceArguments = [l, r - l + 1];
         Array.prototype.push.apply(spliceArguments, sortedSubArray);
         Array.prototype.splice.apply(arr, spliceArguments);
-    }
-
-    function sortPair(arr, left, right) {
-        if (arr[left] > arr[right]) {
-            flip(arr, left, right);
-        }
     }
 } ());
