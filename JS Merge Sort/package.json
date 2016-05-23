@@ -1,0 +1,20 @@
+{
+  "name": "heap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests.js -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "requirejs": "^2.2.0"
+  }
+}
