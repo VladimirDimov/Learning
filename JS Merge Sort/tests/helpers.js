@@ -1,25 +1,46 @@
 var helpers = (function () {
     'use strict';
 
-    function getEmptyHeap() {
-        return heap.init(function (right, left) {
-            return right > left;
-        });
-    };
-
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    var maxNumberComparator = function (right, left) {
+    function areArraysEqual(arr1, arr2, comparator) {
+        if (arr1.length != arr2.length) {
+            console.log(arr1);
+            console.log(arr2);
+            return false;
+        }
+
+        for (var i = 0, length = arr1.length; i < length; i += 1) {
+            if (!comparator(arr1[i], arr2[i])) {
+                console.log(arr1);
+                console.log(arr2);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function getRandomArray(length, valueProvider) {
+        var arr = [];
+        for (var i = 0; i < length; i += 1) {
+            arr.push(valueProvider());
+        }
+
+        return arr;
+    }
+
+    function maxNumberComparator(right, left) {
         return left > right;
     };
 
-    var minNumberComparator = function (right, left) {
+    function minNumberComparator(right, left) {
         return left < right;
     };
 
-    function randomString(length) {
+    function getRandomString(length) {
         var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
         var randomstring = '';
         for (var i = 0; i < length; i++) {
@@ -30,20 +51,21 @@ var helpers = (function () {
         return randomstring;
     }
 
-    function randomStringArray(length) {
+    function getRandomStringArray(arrayLength, stringMinLength, stringMaxLength) {
         var arr = [];
 
         for (var i = 0; i < length; i++) {
-            arr.push(randomString(Math.floor(Math.random() * 20 + 1)));
+            arr.push(randomString(Math.floor(Math.random() * stringMaxLength + stringMinLength)));
         }
     }
 
     return {
-        getEmptyHeap: getEmptyHeap,
         getRandomInt: getRandomInt,
         maxNumberComparator: maxNumberComparator,
         minNumberComparator: minNumberComparator,
-        randomString: randomString,
-        randomStringArray: randomStringArray
-    }
+        getRandomString: getRandomString,
+        getRandomStringArray: getRandomStringArray,
+        getRandomArray: getRandomArray,
+        areArraysEqual: areArraysEqual
+    };
 } ());

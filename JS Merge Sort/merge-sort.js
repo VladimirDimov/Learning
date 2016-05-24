@@ -3,6 +3,10 @@ var mergeSorter = (function () {
 
     return {
         sort: function (arr, comparator) {
+            if (!arr) {
+                throw new Error('Invalid null or undefined array!');
+            }
+
             merge(arr, 0, arr.length - 1, getComparator(comparator));
         }
     };
@@ -23,11 +27,11 @@ var mergeSorter = (function () {
     }
 
     function ascendingComparator(left, right) {
-        return left < right;
+        return left <= right;
     }
 
     function descendingComparator(left, right) {
-        return left < right;
+        return left >= right;
     }
 
     function merge(arr, left, right, comparator) {
@@ -51,14 +55,14 @@ var mergeSorter = (function () {
         var lArr = arr.slice(l, lm + 1);
         var rArr = arr.slice(rm, r + 1);
 
-        while (lArr[0] || rArr[0]) {
-            if (lArr[0] && rArr[0]) {
+        while (lArr.length != 0 || rArr.length != 0) {
+            if (lArr.length != 0 && rArr.length != 0) {
                 if (comparator(lArr[0], rArr[0])) {
                     sortedSubArray.push(lArr.shift());
                 } else {
                     sortedSubArray.push(rArr.shift());
                 }
-            } else if (lArr[0]) {
+            } else if (lArr.length != 0) {
                 sortedSubArray.push(lArr.shift());
             } else {
                 sortedSubArray.push(rArr.shift());
