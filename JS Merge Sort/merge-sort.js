@@ -7,7 +7,7 @@ var mergeSorter = (function () {
                 throw new Error('Invalid null or undefined array!');
             }
 
-            merge(arr, 0, arr.length - 1, getComparator(comparator));
+            merge(arr, 0, Math.max(arr.length - 1, 0), getComparator(comparator));
         }
     };
 
