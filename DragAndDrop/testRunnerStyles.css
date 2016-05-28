@@ -1,0 +1,49 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul#mocha-stats {
+    margin: 20px;
+}
+
+.passes em {
+    color: green;
+}
+
+.failures em {
+    color: red;
+}
+
+.duration {
+   margin: 20px;
+   color: dimgray; 
+}
+
+.replay {
+    content: "Replay";
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li.pass {
+    margin: 10px;
+    background-blend-mode: color-burn;
+}
+
+li.pass h2:before {
+    content: "OK ";
+    color: green;
+}
+
+li.fail {
+    background-color: violet;
+    margin: 10px;
+}
+
+li.fail h2:before {
+    content: "FAIL ";
+    color: red;
+}

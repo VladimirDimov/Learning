@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="testrunnerStyles.css">
+</head>
+
+<body>
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script>
+        mocha.setup('bdd')
+    </script>
+
+    <!-- load code you want to test here -->
+    <script src="heap.js"></script>
+
+    <!-- load your test files here -->
+    <script src="tests/helpers.js"></script>
+    <script src="tests/init.js"></script>
+    <script src="tests/elements.js"></script>
+    <script src="tests/push.js"></script>
+    <script src="tests/pop.js"></script>
+    <script>
+        mocha.run();
+    </script>
+</body>
+
+</html>
