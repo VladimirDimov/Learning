@@ -1,0 +1,26 @@
+.thumbnail {
+    display: inline-block;
+    background-color: ghostwhite;
+    width: 100px;
+    height: 80px;
+    margin: 10px;
+    border: 2px solid dimgray;
+    border-radius: 5px;
+}
+
+.thumbnail>* {
+    display: block;
+    float: left;
+    width: 90%;
+    height: 90%;
+    margin: 5%;
+    opacity: .5;
+}
+
+.dropzone {
+        width: 350px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+        overflow-y: scroll;
+}
