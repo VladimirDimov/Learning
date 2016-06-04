@@ -1,0 +1,11 @@
+﻿@model IQueryable<MvcTemplate.Data.Models.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach (var user in Model)
+{
+    <span>@user.Id - @user.Email</span>
+}
+
