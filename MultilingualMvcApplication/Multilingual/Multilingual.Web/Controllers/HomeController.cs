@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace Multilingual.Web.Controllers
+﻿namespace Multilingual.Web.Controllers
 {
+    using System.Web.Mvc;
+    using Multilingual.Web.MultilingualActivator;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            var translationsResourceProvider = TranslationsResourceProvider.Instance("C:\\Users\\User3\\Desktop\\Learning\\MultilingualMvcApplication\\Multilingual\\Multilingual.Web\\Resources\\Translations.json", "en");
+
+
+            translationsResourceProvider["About", "fr"] = "About FR";
+
             return View();
         }
 

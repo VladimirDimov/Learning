@@ -18,6 +18,7 @@ namespace Multilingual.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // Register translation module
             ControllerBuilder
                             .Current
                             .SetControllerFactory(new DefaultControllerFactory(new LocalizedControllerActivator()));

@@ -1,5 +1,5 @@
-﻿@using Multilingual.Web.Resources
-@using Multilingual.Web.MultilingualActivator
+﻿@using Multilingual.Web.MultilingualActivator
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +22,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink(Html.Translate(Translations.Home), "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink(Html.Translate("Home"), "Index", "Home")</li>
+                    <li>@Html.ActionLink(Html.Translate("About"), "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li><a href="home/contact">content</a></li>
                 </ul>
