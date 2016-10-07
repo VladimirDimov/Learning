@@ -2,30 +2,108 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div id="translations" class="bootstrap-table">
+    <div class="fixed-table-toolbar">
+        <div class="pull-right search">
+            <input data-columnNames="Title" filter="cs" class="form-control" type="text" placeholder="Search">
+        </div>
+    </div>
+    <div class="fixed-table-container" style="height: 500px; padding-bottom: 40px;">
+        <div class="fixed-table-header fixed-table-body" style="margin-right: 0px;">
+            <table dt-table class="table table-hover JColResizer">
+                <thead>
+                    <tr>
+                        <th sortable data-name="Title" data-field="id" tabindex="0">
+                            <div class="th-inner th-inner">ID</div>
+                            <div class="fht-cell" style="width: 175px;">
+                            </div>
+                        </th>
+                        <th data-field="id" tabindex="0">
+                            <div class="th-inner th-inner">Actions</div>
+                            <div class="fht-cell" style="width: 175px;">
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dt-template="main">
+                        <td>
+                            <div data-name="Title"></div>
+                        </td>
+                        <td>
+                            <button dt-btn-template="edit" dt-delay="250" class="btn btn-warning">Edit</button>
+                            <button dt-btn-template="info" dt-delay="250" class="btn btn-warning">Info</button>
+                        </td>
+                    </tr>
+
+                    <tr dt-template="info">
+                        <td>
+                            <div data-name="Title"></div>
+                        </td>
+
+                        <td>
+                            <button dt-btn-template="main" dt-delay="250" class="btn btn-warning">Cancel</button>
+                            <button dt-btn-template="edit" dt-delay="250" class="btn btn-warning">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr dt-template="edit">
+                        <td>
+                            <div data-name="Title"></div>
+                            <div data-name="Translations" />
+                        </td>
+                        <td>
+                            <button dt-btn-template="main" dt-delay="250" class="btn btn-info">Cancel</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>
+                           Language: <input type="text" data-name="lang" value="" />
+                           Title: <input type="text" data-name="title" value="" />
+                           Translation: <input type="text" data-name="translation" value="" />
+                        </td>
+                        <td>
+                            <button dt-btn-update dt-delay="250" class="btn btn-info">Add</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="fixed-table-pagination" style="display: block;">
+            <div class="pull-left pagination-detail">
+                <span class="pagination-info">Showing 20 of <span number-of-rows /> rows</span>
+            </div>
+            <div class="pull-right center pagination" dt-paginator="3" dt-paginator-length="7">
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+@section Scripts {
+    <script>
+        dataTable.init(('#translations'), {
+            ajax: {
+                url: "/home/getTranslations"
+            },
+            columns: {
+                Translations: {
+                    render: function (data) {
+                        for (var prop in data) {
+                            return '<div><span>' + prop + ': </span>' + '<input type="text" data-name="' + prop + '" value="' + data[prop] + '" />' + '</span></div>'
+                        }
+                    }
+                }
+            },
+            editable: {
+                update: function (data, success, error) {
+                    debugger;
+                    success();
+                    //error();
+                }
+            }
+        });
+    </script>
+}

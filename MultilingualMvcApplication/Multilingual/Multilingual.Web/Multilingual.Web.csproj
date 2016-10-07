@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataTables, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\DataTables.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -151,6 +155,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\TranslationModel.cs" />
     <Compile Include="MultilingualActivator\IResourceRead.cs" />
     <Compile Include="MultilingualActivator\IResourceWrite.cs" />
     <Compile Include="MultilingualActivator\LocalizedControllerActivator.cs" />
@@ -166,8 +171,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\datatableserverside\datatable.js" />
+    <Content Include="assets\datatableserverside\img\spinners\0.gif" />
+    <Content Include="assets\datatableserverside\img\spinners\1.gif" />
+    <Content Include="assets\datatableserverside\img\spinners\2.gif" />
+    <Content Include="assets\datatableserverside\img\spinners\3.gif" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="dll\DataTables.dll" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -209,7 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
