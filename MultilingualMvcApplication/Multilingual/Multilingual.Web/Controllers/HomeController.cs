@@ -9,6 +9,8 @@
 
     public class HomeController : Controller
     {
+        string path = @"C:\Users\vladko_sz\Desktop\Learning\MultilingualMvcApplication\Multilingual\Multilingual.Web\Resources\Translations.json";
+
         public ActionResult Index()
         {
             return View();
@@ -17,7 +19,7 @@
         [DataTable]
         public ActionResult GetTranslations()
         {
-            var translationsResourceProvider = TranslationsResourceProvider.Instance("C:\\Users\\User3\\Desktop\\Learning\\MultilingualMvcApplication\\Multilingual\\Multilingual.Web\\Resources\\Translations.json", "en");
+            var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
 
             var translations = new List<TranslationModel>();
             foreach (var title in translationsResourceProvider.Translations.Keys)
@@ -32,17 +34,21 @@
             return View(translations.AsQueryable());
         }
 
+        public ActionResult AddTranslation(string title, string language, string translation)
+        {
+            var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
+            translationsResourceProvider[title, language] = translation;
+
+            return new HttpStatusCodeResult(200);
+        }
+
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

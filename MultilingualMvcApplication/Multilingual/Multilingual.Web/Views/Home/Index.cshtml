@@ -60,12 +60,12 @@
                 <tfoot>
                     <tr>
                         <td>
-                           Language: <input type="text" data-name="lang" value="" />
-                           Title: <input type="text" data-name="title" value="" />
-                           Translation: <input type="text" data-name="translation" value="" />
+                            Language: <input type="text" data-name="lang" value="" />
+                            Title: <input type="text" data-name="title" value="" />
+                            Translation: <input type="text" data-name="translation" value="" />
                         </td>
                         <td>
-                            <button dt-btn-update dt-delay="250" class="btn btn-info">Add</button>
+                            <button dt-btn-post="main add" dt-delay="250" class="btn btn-info">Add</button>
                         </td>
                     </tr>
                 </tfoot>
@@ -90,18 +90,41 @@
             },
             columns: {
                 Translations: {
-                    render: function (data) {
-                        for (var prop in data) {
-                            return '<div><span>' + prop + ': </span>' + '<input type="text" data-name="' + prop + '" value="' + data[prop] + '" />' + '</span></div>'
+                    render: function (cellData, rowData) {
+                        var resultToRender = '';
+                        for (var prop in cellData) {
+                            resultToRender = resultToRender + '<div><span>' + prop + ': </span>' + '<input type="text" data-name="' + prop + '" value="' + cellData[prop] + '" />' + '</span></div>';
                         }
+
+                        resultToRender += 'Language: <input type="text" data-name="addLang" value="" /> Translation: <input type="text" data-name="addTrans" value="" />';
+                        resultToRender += '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info" data-title="' + rowData.Title + '">Add</button>';
+
+                        return resultToRender;
                     }
                 }
             },
             editable: {
-                update: function (data, success, error) {
-                    debugger;
-                    success();
-                    //error();
+                update: {
+                    add: function (postData, rowData, updateRow) {
+                        debugger;
+                    },
+                    update: function (postData, rowData, updateRow) {
+                        debugger;
+                        $.ajax({
+                            url: '/home/addTranslation',
+                            method: 'post',
+                            data: {
+                                title: postData.Title,
+                                language: postData.addLang,
+                                translation: postData.addTrans
+                            },
+                            success: function () {
+                                rowData.Translations[postData.addLang] = postData.addTrans;
+                                postData = {};
+                                updateRow(postData);
+                            }
+                        });
+                    }
                 }
             }
         });

@@ -17,7 +17,9 @@
 
         static LocalizedControllerActivator()
         {
-            TranslateExtensionMethods.TranslationsDictionary = TranslationsResourceProvider.Instance("C:\\Users\\User3\\Desktop\\Learning\\MultilingualMvcApplication\\Multilingual\\Multilingual.Web\\Resources\\Translations.json", "en");
+            TranslateExtensionMethods.TranslationsDictionary = 
+                TranslationsResourceProvider
+                .Instance(@"C:\Users\vladko_sz\Desktop\Learning\MultilingualMvcApplication\Multilingual\Multilingual.Web\Resources\Translations.json", "en");
         }
 
         public void ChangeLang(RequestContext requestContext, string langAbbreviation)

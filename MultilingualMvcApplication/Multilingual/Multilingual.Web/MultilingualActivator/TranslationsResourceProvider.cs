@@ -6,6 +6,8 @@
     using System.IO;
     using System.Threading;
     using Newtonsoft.Json;
+    using System.Globalization;
+    using System.Linq;
 
     public class TranslationsResourceProvider
     {
@@ -70,7 +72,7 @@
                         return $"[Missing {DefaultLanguage} translation]";
                     }
 
-                    return translations[title][lang];
+                    return translations[title][DefaultLanguage];
                 }
 
                 return translations[title][lang];
@@ -78,7 +80,13 @@
 
             set
             {
-                this.AddorUpdateTranslation(title, lang, value);
+                var twoLetterIsoLang = GetTwoLetterLanguage(lang);
+                if (twoLetterIsoLang == null)
+                {
+                    throw new ArgumentException($"Invalid ISO language: {lang}");
+                }
+
+                this.AddorUpdateTranslation(title, twoLetterIsoLang, value);
                 this.Save();
             }
         }
@@ -106,6 +114,31 @@
             else
             {
                 rowTranslations[lang] = value;
+            }
+        }
+
+        private string GetTwoLetterLanguage(string language)
+        {
+            language = language.ToLower();
+            var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            CultureInfo correspondingCulture = null;
+
+            if (language.Length == 2)
+            {
+                correspondingCulture = cultures.FirstOrDefault(x => x.TwoLetterISOLanguageName == language);
+            }
+            else if (language.Length == 3)
+            {
+                correspondingCulture = cultures.FirstOrDefault(x => x.ThreeLetterISOLanguageName == language);
+            }
+
+            if (correspondingCulture == null)
+            {
+                return null;
+            }
+            else
+            {
+                return correspondingCulture.TwoLetterISOLanguageName;
             }
         }
     }
