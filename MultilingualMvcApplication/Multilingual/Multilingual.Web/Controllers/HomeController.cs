@@ -6,6 +6,7 @@
     using DataTables;
     using Models;
     using Multilingual.Web.MultilingualActivator;
+    using System.Net;
 
     public class HomeController : Controller
     {
@@ -34,10 +35,26 @@
             return View(translations.AsQueryable());
         }
 
-        public ActionResult AddTranslation(string title, string language, string translation)
+        public ActionResult AddTranslation(string title)
+        {
+            var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
+            translationsResourceProvider.AddTranslation(title);
+
+            return new HttpStatusCodeResult(200);
+        }
+
+        public ActionResult UpdateTranslation(string title, string language, string translation)
         {
             var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
             translationsResourceProvider[title, language] = translation;
+
+            return new HttpStatusCodeResult(200);
+        }
+
+        public ActionResult RemoveTranslation(string title, string language)
+        {
+            var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
+            translationsResourceProvider.Delete(title, language);
 
             return new HttpStatusCodeResult(200);
         }

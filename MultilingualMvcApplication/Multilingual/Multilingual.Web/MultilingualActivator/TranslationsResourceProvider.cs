@@ -57,6 +57,17 @@
             translations.Add(title, new Dictionary<string, string>());
         }
 
+        public void Delete(string title, string lang)
+        {
+            if (lang == null) // remove the whole title
+            {
+                translations.Remove(title);
+            }
+
+            translations[title].Remove(lang);
+            this.Save();
+        }
+
         public string this[string title, string lang]
         {
             get

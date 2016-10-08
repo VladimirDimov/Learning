@@ -5,7 +5,7 @@
 <div id="translations" class="bootstrap-table">
     <div class="fixed-table-toolbar">
         <div class="pull-right search">
-            <input data-columnNames="Title" filter="cs" class="form-control" type="text" placeholder="Search">
+            <input data-columnNames="Title" filter="ci" class="form-control" type="text" placeholder="Search">
         </div>
     </div>
     <div class="fixed-table-container" style="height: 500px; padding-bottom: 40px;">
@@ -31,7 +31,7 @@
                             <div data-name="Title"></div>
                         </td>
                         <td>
-                            <button dt-btn-template="edit" dt-delay="250" class="btn btn-warning">Edit</button>
+                            <button dt-btn-template="edit" dt-delay="250" class="btn btn-default">Edit</button>
                             <button dt-btn-template="info" dt-delay="250" class="btn btn-warning">Info</button>
                         </td>
                     </tr>
@@ -39,6 +39,7 @@
                     <tr dt-template="info">
                         <td>
                             <div data-name="Title"></div>
+                            <div data-name="Translations" dt-render="info"></div>
                         </td>
 
                         <td>
@@ -50,7 +51,7 @@
                     <tr dt-template="edit">
                         <td>
                             <div data-name="Title"></div>
-                            <div data-name="Translations" />
+                            <div data-name="Translations" dt-render="edit" />
                         </td>
                         <td>
                             <button dt-btn-template="main" dt-delay="250" class="btn btn-info">Cancel</button>
@@ -59,13 +60,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td>
-                            Language: <input type="text" data-name="lang" value="" />
-                            Title: <input type="text" data-name="title" value="" />
-                            Translation: <input type="text" data-name="translation" value="" />
-                        </td>
-                        <td>
-                            <button dt-btn-post="main add" dt-delay="250" class="btn btn-info">Add</button>
+                        <td colspan="2">
+                            <input id="tb-title" type="text" placeholder="Title" class="form-control" />
+                            <button id="btn-addTitle" class="btn-primary">Add</button>
                         </td>
                     </tr>
                 </tfoot>
@@ -90,43 +87,99 @@
             },
             columns: {
                 Translations: {
-                    render: function (cellData, rowData) {
-                        var resultToRender = '';
-                        for (var prop in cellData) {
-                            resultToRender = resultToRender + '<div><span>' + prop + ': </span>' + '<input type="text" data-name="' + prop + '" value="' + cellData[prop] + '" />' + '</span></div>';
+                    render: {
+                        edit: function (cellData, rowData) {
+                            var resultToRender = '';
+                            for (var prop in cellData) {
+                                resultToRender = resultToRender +
+                                '<div class="form-group row" dt-form data-name="Translations">' +
+                                '<label data-name="language" for="example-text-input" class="col-xs-2 col-form-label">' + prop + '</label>' +
+                                '<div class="col-xs-10">' +
+                                '<input data-name="translation" class="form-control col-xs-4" type="text" value="' + cellData[prop] + '" id="example-text-input">' +
+                                '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info">Update</button>' +
+                                '<button dt-btn-post="edit removeTranslation" dt-delay="250" class="btn btn-danger">Delete</button>' +
+                                '</div>' +
+                                '</div>';
+                            }
+
+                            resultToRender +=
+                                '<div class="form-group row" dt-form>' +
+                                '<div class="col-xs-10">' +
+                                '<input placeholder="Language" data-name="language" class="form-control col-xs-2" type="text"/>' +
+                                '<input placeholder="Translation" data-name="translation" class="form-control col-xs-6" type="text"/>' +
+                                '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info col-xs-2" data-title="' + rowData.Title + '">Add</button>' +
+                                '</div>' +
+                                '</div>';
+
+                            return resultToRender;
+                        },
+
+                        info: function (cellData, rowData) {
+                            var resultToRender = '';
+                            for (var prop in cellData) {
+                                resultToRender = resultToRender +
+                                  '<div class="form-group row">' +
+                                  '<label for="example-text-input" class="col-xs-2 col-form-label">' + prop + '</label>' +
+                                  '<div class="col-xs-10">' +
+                                  '<input disabled data-name="' + prop + '" class="form-control" type="text" value="' + cellData[prop] + '" id="example-text-input">' +
+                                  '</div>' +
+                                  '</div>';
+                            }
+
+                            return resultToRender;
                         }
 
-                        resultToRender += 'Language: <input type="text" data-name="addLang" value="" /> Translation: <input type="text" data-name="addTrans" value="" />';
-                        resultToRender += '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info" data-title="' + rowData.Title + '">Add</button>';
-
-                        return resultToRender;
                     }
                 }
             },
             editable: {
                 update: {
-                    add: function (postData, rowData, updateRow) {
-                        debugger;
-                    },
                     update: function (postData, rowData, updateRow) {
-                        debugger;
                         $.ajax({
-                            url: '/home/addTranslation',
+                            url: '/home/updateTranslation',
                             method: 'post',
                             data: {
-                                title: postData.Title,
-                                language: postData.addLang,
-                                translation: postData.addTrans
+                                title: rowData.Title,
+                                language: postData.language,
+                                translation: postData.translation
                             },
                             success: function () {
-                                rowData.Translations[postData.addLang] = postData.addTrans;
+                                rowData.Translations[postData.language] = postData.translation;
                                 postData = {};
                                 updateRow(postData);
                             }
                         });
-                    }
+                    },
+                    removeTranslation: function (postData, rowData, updateRow) {
+                        $.ajax({
+                            url: '/home/removeTranslation',
+                            method: 'post',
+                            data: {
+                                title: rowData.Title,
+                                language: postData.language,
+                                translation: postData.translation
+                            },
+                            success: function () {
+                                delete rowData.Translations[postData.language];
+                                postData = {};
+                                updateRow(postData);
+                            }
+                        });
+                    },
                 }
             }
         });
+
+        $('#btn-addTitle').on('click', function () {
+            $.ajax({
+                url: '/home/addTranslation',
+                method: 'post',
+                data: {
+                    title: $('#tb-title').val(),
+                },
+                success: function () {
+                }
+            });
+        })
     </script>
 }
