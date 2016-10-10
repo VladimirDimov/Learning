@@ -25,6 +25,14 @@
                     <li>@Html.ActionLink(Html.Translate("Home"), "Index", "Home")</li>
                     <li>@Html.ActionLink(Html.Translate("About"), "About", "Home")</li>
                     <li>@Html.ActionLink(Html.Translate("Contact"), "Contact", "Home")</li>
+                    <li class="dropdown" id="changeLanguage">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Language <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" lang="en">EN</a></li>
+                            <li><a href="#" lang="bg">BG</a></li>
+                            <li><a href="#" lang="fr">FR</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -41,5 +49,19 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $('#changeLanguage li a').on('click', function (e) {
+            e.preventDefault();
+            var lang = $(this).attr('lang');
+
+            $.ajax({
+                url: '/home/changeLanguage',
+                data: { language: lang },
+                success: function () {
+                    window.location.reload();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

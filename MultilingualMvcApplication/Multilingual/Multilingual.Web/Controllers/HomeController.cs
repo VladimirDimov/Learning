@@ -7,14 +7,36 @@
     using Models;
     using Multilingual.Web.MultilingualActivator;
     using System.Net;
-
+    using System.Threading.Tasks;
+    using System.Threading;
+    using System.Globalization;
     public class HomeController : Controller
     {
-        string path = @"C:\Users\vladko_sz\Desktop\Learning\MultilingualMvcApplication\Multilingual\Multilingual.Web\Resources\Translations.json";
+        string path = null;
+
+        public HomeController()
+        {
+            this.path = @"C:\Users\User3\Desktop\Learning\MultilingualMvcApplication\Multilingual\Multilingual.Web\Resources\Translations.json";
+            TranslationsResourceProvider.Instance(path, "en");
+            TranslateExtensionMethods.TranslationsDictionary = TranslationsResourceProvider.Instance(path, "en");
+        }
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult ChangeLanguage(string language)
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+            this.Response.Cookies.Add(new System.Web.HttpCookie("Language", language));
+
+            if (this.RouteData.Values["lang"] != null)
+            {
+                this.RouteData.Values["lang"] = language;
+            }
+
+            return new HttpStatusCodeResult(200);
         }
 
         [DataTable]

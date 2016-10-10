@@ -5,7 +5,7 @@
 <div id="translations" class="bootstrap-table">
     <div class="fixed-table-toolbar">
         <div class="pull-right search">
-            <input data-columnNames="Title" filter="cix" class="form-control" type="text" placeholder="Search">
+            <input data-columnNames="Title" filter="ci" class="form-control" type="text" placeholder="Search">
         </div>
     </div>
     <div class="fixed-table-container" style="height: 500px; padding-bottom: 40px;">
@@ -93,21 +93,23 @@
                             for (var prop in cellData) {
                                 resultToRender = resultToRender +
                                 '<div class="form-group row" dt-form data-name="Translations">' +
-                                '<label data-name="language" for="example-text-input" class="col-xs-2 col-form-label">' + prop + '</label>' +
-                                '<div class="col-xs-10">' +
-                                '<input data-name="translation" class="form-control col-xs-4" type="text" value="' + cellData[prop] + '" id="example-text-input">' +
+                                '<label data-name="language" for="example-text-input" class="col-md-1 col-form-label">' + prop + '</label>' +
+                                '<div class="col-md-10">' +
+                                '<input data-name="translation" class="form-control col-md-3" type="text" value="' + cellData[prop] + '" id="example-text-input">' +
+                                '<div class="button-group">' +
                                 '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info">Update</button>' +
                                 '<button dt-btn-post="edit removeTranslation" dt-delay="250" class="btn btn-danger">Delete</button>' +
+                                '</div>' +
                                 '</div>' +
                                 '</div>';
                             }
 
                             resultToRender +=
                                 '<div class="form-group row" dt-form>' +
-                                '<div class="col-xs-10">' +
-                                '<input placeholder="Language" data-name="language" class="form-control col-xs-2" type="text"/>' +
-                                '<input placeholder="Translation" data-name="translation" class="form-control col-xs-6" type="text"/>' +
-                                '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info col-xs-2" data-title="' + rowData.Title + '">Add</button>' +
+                                '<div class="col-md-10">' +
+                                '<input placeholder="Language" data-name="language" class="form-control col-md-2" type="text"/>' +
+                                '<input placeholder="Translation" data-name="translation" class="form-control col-md-6" type="text"/>' +
+                                '<button dt-btn-post="edit update" dt-delay="250" class="btn btn-info col-md-2" data-title="' + rowData.Title + '">Add</button>' +
                                 '</div>' +
                                 '</div>';
 
@@ -119,8 +121,8 @@
                             for (var prop in cellData) {
                                 resultToRender = resultToRender +
                                   '<div class="form-group row">' +
-                                  '<label for="example-text-input" class="col-xs-2 col-form-label">' + prop + '</label>' +
-                                  '<div class="col-xs-10">' +
+                                  '<label for="example-text-input" class="col-md-2 col-form-label">' + prop + '</label>' +
+                                  '<div class="col-md-10">' +
                                   '<input disabled data-name="' + prop + '" class="form-control" type="text" value="' + cellData[prop] + '" id="example-text-input">' +
                                   '</div>' +
                                   '</div>';

@@ -1,26 +1,17 @@
 ﻿namespace Multilingual.Web.MultilingualActivator
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
     using System.Threading;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
-    using Newtonsoft.Json;
+
     public class LocalizedControllerActivator : IControllerActivator
     {
         private const string Language = "Language";
 
         private string defaultLanguage = "en";
-
-        static LocalizedControllerActivator()
-        {
-            TranslateExtensionMethods.TranslationsDictionary = 
-                TranslationsResourceProvider
-                .Instance(@"C:\Users\vladko_sz\Desktop\Learning\MultilingualMvcApplication\Multilingual\Multilingual.Web\Resources\Translations.json", "en");
-        }
 
         public void ChangeLang(RequestContext requestContext, string langAbbreviation)
         {
