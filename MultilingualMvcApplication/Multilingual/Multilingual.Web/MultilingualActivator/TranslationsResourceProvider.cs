@@ -20,9 +20,11 @@
             this.Path = path;
             this.DefaultLanguage = defaultLanguage;
 
-            using (var reader = new StreamReader(this.Path))
+            using (var streamReader = new StreamReader(this.Path))
+            using (var jsonReader = new JsonTextReader(streamReader))
             {
-                var diction = JsonConvert.DeserializeObject<ConcurrentDictionary<string, Dictionary<string, string>>>(reader.ReadToEnd());
+                var serializer = new JsonSerializer();
+                var diction = serializer.Deserialize<ConcurrentDictionary<string, Dictionary<string, string>>>(jsonReader);
                 translations = diction;
             }
         }
@@ -63,8 +65,11 @@
             {
                 translations.Remove(title);
             }
+            else
+            {
+                translations[title].Remove(lang);
+            }
 
-            translations[title].Remove(lang);
             this.Save();
         }
 

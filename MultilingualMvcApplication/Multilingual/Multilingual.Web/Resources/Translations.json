@@ -1,1 +1,27 @@
-{"Home":{"en":"Home","bg":"Начало","fr":"Home FR"},"ApplicationName":{"bg":"Име на приложението","en":"Application Name","fr":"App FR"},"Contact":{"en":"Contact","bg":"Контакти","fr":"Contact FR"},"About":{"fr":"About FR","en":"About","bg":"За Нас"},"Language":{"en":"Language","bg":"Език","fr":"Language FR"}}
+{
+  "Home": {
+    "en": "Home",
+    "bg": "Начало",
+    "fr": "Home FR"
+  },
+  "ApplicationName": {
+    "bg": "Име на приложението",
+    "en": "Application Name",
+    "fr": "App FR"
+  },
+  "Contact": {
+    "en": "Contact",
+    "bg": "Контакти",
+    "fr": "Contact FR"
+  },
+  "About": {
+    "fr": "About FR",
+    "en": "About",
+    "bg": "За Нас"
+  },
+  "Language": {
+    "en": "Language",
+    "bg": "Език",
+    "fr": "Language FR"
+  }
+}

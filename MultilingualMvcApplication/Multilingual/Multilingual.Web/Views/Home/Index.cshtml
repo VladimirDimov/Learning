@@ -33,6 +33,7 @@
                         <td>
                             <button dt-btn-template="edit" dt-delay="250" class="btn btn-default">Edit</button>
                             <button dt-btn-template="info" dt-delay="250" class="btn btn-warning">Info</button>
+                            <button dt-delay="250" class="btn btn-danger btn-delete">Delete</button>
                         </td>
                     </tr>
 
@@ -82,7 +83,7 @@
 
 @section Scripts {
     <script>
-        dataTable.init(('#translations'), {
+        var translationsTable = dataTable.init(('#translations'), {
             ajax: {
                 url: "/home/getTranslations"
             },
@@ -168,9 +169,22 @@
                                 updateRow(postData);
                             }
                         });
-                    },
+                    }
                 }
             }
+        });
+
+        // Delete row
+        $('body').on('click', '.btn-delete', function () {
+            var $this = $(this);
+            var $row = $this.parentsUntil('tr').parent().remove();
+            var title = $row.find('[data-name=Title]').html();
+
+            $.ajax({
+                url: 'home/removeTranslation?title=' + title,
+                success: function () {
+                }
+            });
         });
 
         $('#btn-addTitle').on('click', function () {
@@ -181,6 +195,7 @@
                     title: $('#tb-title').val(),
                 },
                 success: function () {
+                    window.location.reload();
                 }
             });
         })

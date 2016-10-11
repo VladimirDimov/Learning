@@ -76,7 +76,14 @@
         public ActionResult RemoveTranslation(string title, string language)
         {
             var translationsResourceProvider = TranslationsResourceProvider.Instance(path, "en");
-            translationsResourceProvider.Delete(title, language);
+            if (title == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); // 400
+            }
+            else
+            {
+                translationsResourceProvider.Delete(title, language);
+            }
 
             return new HttpStatusCodeResult(200);
         }
