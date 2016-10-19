@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-15.UsingTaskWaitAny", "Us
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-28.UsingBlockingCollection", "UsingBlockingCollection\1-28.UsingBlockingCollection.csproj", "{DCE2D591-56FE-417E-BB16-3BBD869CDE88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareAndExchangeAsANonatomicOperation", "CompareAndExchangeAsANonatomicOperation\CompareAndExchangeAsANonatomicOperation.csproj", "{A72F9B1F-6FBD-478A-B2C9-8BDA4AF832CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1-44.AddingAContinuationForCanceledTasks", "AddingAContinuationForCanceledTasks\1-44.AddingAContinuationForCanceledTasks.csproj", "{05613935-7695-4A79-B100-0E30AF543073}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +91,14 @@ Global
 		{DCE2D591-56FE-417E-BB16-3BBD869CDE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE2D591-56FE-417E-BB16-3BBD869CDE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE2D591-56FE-417E-BB16-3BBD869CDE88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A72F9B1F-6FBD-478A-B2C9-8BDA4AF832CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A72F9B1F-6FBD-478A-B2C9-8BDA4AF832CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A72F9B1F-6FBD-478A-B2C9-8BDA4AF832CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A72F9B1F-6FBD-478A-B2C9-8BDA4AF832CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05613935-7695-4A79-B100-0E30AF543073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05613935-7695-4A79-B100-0E30AF543073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05613935-7695-4A79-B100-0E30AF543073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05613935-7695-4A79-B100-0E30AF543073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

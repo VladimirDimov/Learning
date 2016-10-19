@@ -28,6 +28,15 @@ namespace Chapter1
                     Console.WriteLine("Thread B: {0}", x);
                 }
             }).Start();
+
+            new Thread(() =>
+            {
+                for (int x = 0; x < _field.Value; x++)
+                {
+                    Console.WriteLine("Thread C: {0}", x);
+                }
+            }).Start();
+
             Console.ReadKey();
         }
     }
