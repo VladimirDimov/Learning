@@ -1,6 +1,7 @@
 import { Injectable, Inject } from 'angular2/core';
 import { Http, Headers } from 'angular2/http';
 import 'rxjs/add/operator/map';
+import  globalConstants = require('./globalConstants');
 
 @Injectable()
 export class AppService {

@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../app/components/home/home.component', '../app/components/account/login/login.component', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', '../app/components/home/home.component', '../app/components/account/login/login.component', '../app/components/account/register/register.component', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../app/components/home/home.component', '../a
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, home_component_1, login_component_1, router_1;
+    var core_1, home_component_1, login_component_1, register_component_1, router_1;
     var AppComponent;
     return {
         setters:[
@@ -22,6 +22,9 @@ System.register(['angular2/core', '../app/components/home/home.component', '../a
             },
             function (login_component_1_1) {
                 login_component_1 = login_component_1_1;
+            },
+            function (register_component_1_1) {
+                register_component_1 = register_component_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -38,7 +41,8 @@ System.register(['angular2/core', '../app/components/home/home.component', '../a
                     }),
                     router_1.RouteConfig([
                         { path: '/', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
-                        { path: '/account/login', name: 'Login', component: login_component_1.LoginComponent }
+                        { path: '/account/login', name: 'Login', component: login_component_1.LoginComponent },
+                        { path: '/account/register', name: 'Register', component: register_component_1.RegisterComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
