@@ -14,11 +14,13 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script src="/node_modules/angular2/bundles/router.dev.js"></script>
 
+    <!--3. Additional libraries-->
     <script src="node_modules\jquery\dist\jquery.js"></script>
     <script src="node_modules\bootstrap\dist\js\bootstrap.min.js"></script>
 
-    <!-- 2. Configure SystemJS -->
+    <!-- 4. Configure SystemJS -->
     <script>      
       System.config({
         packages: {        
@@ -35,7 +37,8 @@
 
   </head>
 
-  <!-- 3. Display the application -->
+  <base href="/">
+  <!-- 5. Display the application -->
   <body>
     <my-app>Loading...</my-app>
   </body>
