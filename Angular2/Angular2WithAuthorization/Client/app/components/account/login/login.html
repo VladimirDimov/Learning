@@ -1,0 +1,16 @@
+<form action="/account/login" method="post">
+
+    <div class="form-group form-group-icon-left">
+        <i class="fa fa-user input-icon input-icon-show"></i>
+        <label>Username or email</label>
+        <input name="@Html.NameFor(m => m.Email)" class="form-control" placeholder="e.g. johndoe@gmail.com" type="text" />
+    </div>
+
+    <div class="form-group form-group-icon-left">
+        <i class="fa fa-lock input-icon input-icon-show"></i>
+        <label>Password</label>
+        <input name="@Html.NameFor(m => m.Password)" class="form-control" type="password" placeholder="my secret password" />
+    </div>
+
+    <input class="btn btn-primary" type="submit" value="Sign in" />
+</form>
