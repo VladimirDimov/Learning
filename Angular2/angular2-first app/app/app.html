@@ -1,0 +1,22 @@
+<nav>
+	<a [routerLink]="['Employee']">Employee</a>
+</nav>
+
+<h1>{{title}}</h1>
+<h2>My favourite employee is {{myEmployee}}</h2>
+<p *ngIf="employees.length > showMoreThanNumberOfEmployees">There are more than {{showMoreThanNumberOfEmployees}} employees!</p>
+<div>
+	<input #box (keyup)="onKey(box)" [(ngModel)]="twoWayBindingExample"> {{twoWayBindingExample}}
+</div>
+<div>
+	Add Employee (On Enter or button click): <input #name (keyup.Enter)="addEmployee(name)">
+	<button (click)="addEmployee(name)" [style.color]="isClicked ? 'red' : ''"> Add Employee </button>
+</div>
+<h1>{{values}}</h1>
+<ul>
+	<li *ngFor="#employee of employees">{{employee.name}}, Birthday: {{employee.birthday | date | uppercase}}</li>
+</ul>
+
+<div class="main">
+	<router-outlet></router-outlet>
+</div>

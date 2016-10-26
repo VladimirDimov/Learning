@@ -1,0 +1,13 @@
+<h1>My First Angular 2 Application</h1>
+
+<nav>
+    <a [routerLink]="['Home']">Home</a>
+</nav>
+
+<ul>
+	<li *ngFor="#empl of employees">
+		<a [routerLink]="['EmployeeDetatils', {id: empl.id}]">{{empl.name}}</a>
+	</li>
+</ul>
+
+<router-outlet></router-outlet>

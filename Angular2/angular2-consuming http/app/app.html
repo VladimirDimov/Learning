@@ -1,0 +1,10 @@
+<button (click)="getPeople()"> Get </button>
+<div>
+    <input type="text" #name/><br>
+    <button (click)="addPerson(name.value)"> Add </button>
+</div>
+
+<div>
+    {{post == undefined ? "" : post.status}}
+	<p *ngFor="var person of (people)">{{person.name}}</p>
+</div>
