@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-export class Hero {
-  id: number;
-  name: string;
-}
+import { Hero } from './hero';
+import { HeroDetailComponent } from './hero-detail.component';
 
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice' },
@@ -22,7 +19,7 @@ const HEROES: Hero[] = [
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
