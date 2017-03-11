@@ -1,36 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Hero } from './hero';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroService } from './hero.service';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router'
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [HeroService]
+    selector: 'my-app',
+    template: `
+    <h1>{{title}}</h1>
+    <a routerLink="/heroes">Heroes</a>
+   <router-outlet></router-outlet>
+  `
 })
-
 export class AppComponent {
-  constructor(private heroService: HeroService) { }
-
-  ngOnInit() {
-    this.heroService.getHeroes()
-      .then(h => this.heroes = h);
-  }
-
-  title = 'Tour of Heroes!';
-
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
-
-  heroes: Hero[];
-
-  selectedHero: Hero;
-
-  public onSelect(hero: Hero) {
-    this.selectedHero = hero;
-  }
+    title = 'Tour of Heroes';
 }
