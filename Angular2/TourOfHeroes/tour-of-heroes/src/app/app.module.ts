@@ -7,12 +7,19 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes.component';
+import { DashboardComponent } from './dashboard.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
   declarations: [
+
     AppComponent,
+
     HeroDetailComponent,
-    HeroesComponent
+    HeroesComponent,
+    DashboardComponent,
+    PageNotFoundComponent
+
   ],
   imports: [
     BrowserModule,
@@ -20,8 +27,25 @@ import { HeroesComponent } from './heroes.component';
     HttpModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+      {
         path: 'heroes',
         component: HeroesComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'detail/:id',
+        component: HeroDetailComponent
+      },
+      {
+        path: '**',
+        component: PageNotFoundComponent
       }
     ])
   ],
