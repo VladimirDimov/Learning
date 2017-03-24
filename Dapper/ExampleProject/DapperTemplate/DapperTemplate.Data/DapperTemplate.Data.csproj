@@ -44,9 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
-    <Compile Include="DbContext.cs" />
+    <Compile Include="DapperRequester.cs" />
+    <Compile Include="DbModels\Category.cs" />
+    <Compile Include="IDapperRequester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CategoriesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
