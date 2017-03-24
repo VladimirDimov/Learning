@@ -1,16 +1,39 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using Dapper;
-using DapperTemplate.Data.DbModels;
-
-namespace DapperTemplate.Data
+﻿namespace DapperTemplate.Data
 {
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Threading.Tasks;
+    using Dapper;
+
     public class DapperRequester : IDapperRequester
     {
-        private string connectionString = @"data source=.\vdimov;initial catalog=NORTHWND;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+        private string connectionString;
+
+        public DapperRequester(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+        public Task<IEnumerable<T>> QueryAsync<T>(string procedure)
+        {
+            return this.QueryAsync<T>(procedure, null);
+        }
+
+        public Task<IEnumerable<T>> QueryAsync<T>(string procedure, object parameters)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                return this.Query<T>(procedure, parameters);
+            });
+        }
 
         public IEnumerable<T> Query<T>(string procedure)
+        {
+            return this.Query<T>(procedure, null);
+        }
+
+        public IEnumerable<T> Query<T>(string procedure, object parameters)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -18,13 +41,32 @@ namespace DapperTemplate.Data
 
                 var result = connection.Query<T>(
                     sql: procedure,
-                    commandType: CommandType.StoredProcedure);
+                    commandType: CommandType.StoredProcedure,
+                    param: parameters);
 
                 return result;
             }
         }
 
-        public T QueryFirst<T>(string procedure, object id)
+        public Task<T> QueryFirstAsync<T>(string procedure)
+        {
+            return this.QueryFirstAsync<T>(procedure, null);
+        }
+
+        public Task<T> QueryFirstAsync<T>(string procedure, object parameters)
+        {
+            return Task.Factory.StartNew<T>(() =>
+            {
+                return this.QueryFirst<T>(procedure, parameters);
+            });
+        }
+
+        public T QueryFirst<T>(string procedure)
+        {
+            return this.QueryFirst<T>(procedure, null);
+        }
+
+        public T QueryFirst<T>(string procedure, object parameters)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -33,7 +75,7 @@ namespace DapperTemplate.Data
                 var result = connection.QueryFirst<T>(
                     sql: procedure,
                     commandType: CommandType.StoredProcedure,
-                    param: new { id = id });
+                    param: parameters);
 
                 return result;
             }
