@@ -10,7 +10,6 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using MenuCalculator.WebApi.Models;
-using MenuCalculator.Database.DbModels;
 
 namespace MenuCalculator.WebApi.Providers
 {
@@ -32,7 +31,7 @@ namespace MenuCalculator.WebApi.Providers
         {
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
-            User user = await userManager.FindAsync(context.UserName, context.Password);
+            ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
             if (user == null)
             {
