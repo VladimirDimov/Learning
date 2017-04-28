@@ -149,6 +149,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CustomHandlers\MyHandler.cs" />
+    <Compile Include="CustomModules\MyModule.cs" />
     <Compile Include="CustomSessionProvider\SessionProvider.cs" />
     <Compile Include="CustomSessionProvider\SessionStateItemCollection.cs" />
     <Compile Include="Global.asax.cs">
