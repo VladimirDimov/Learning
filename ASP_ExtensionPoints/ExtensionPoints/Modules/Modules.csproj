@@ -155,6 +155,7 @@
   <ItemGroup>
     <Compile Include="ActionInvokers\HomeActionInvoker.cs" />
     <Compile Include="App_Start\AutofacConfig.cs" />
+    <Compile Include="FIlterProviders\CustomFilterProvider.cs" />
     <Compile Include="Filters\AuthRepo.cs" />
     <Compile Include="Filters\IAuthRepo.cs" />
     <Compile Include="MethodSelectors\TestMethodSelector.cs" />

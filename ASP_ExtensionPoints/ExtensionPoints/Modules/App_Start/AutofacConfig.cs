@@ -52,6 +52,7 @@ namespace Modules.App_Start
         {
             builder.RegisterType<HomeActionInvoker>().As<IActionInvoker>();
             builder.RegisterType<AuthRepo>().As<IAuthRepo>();
+            //builder.RegisterFilterProvider();
         }
 
         private static void RegisterServices(ContainerBuilder builder)
