@@ -6,6 +6,7 @@
     using System.Web.Routing;
     using App_Start;
     using ControllerFactory;
+    using FIlterProviders;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -17,6 +18,9 @@
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AutofacConfig.Register();
+
+            FilterProviders.Providers.Clear();
+            FilterProviders.Providers.Add(new CustomFilterProvider());
 
             ControllerBuilder.Current.SetControllerFactory(typeof(CustomControllerFactory));
         }
