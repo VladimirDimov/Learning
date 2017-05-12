@@ -149,6 +149,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\CustomFilterProvider.cs" />
+    <Compile Include="Filters\GlobalFilter1.cs" />
+    <Compile Include="Filters\GlobalFilter2.cs" />
+    <Compile Include="Filters\ActionFilter1.cs" />
+    <Compile Include="Filters\SkipGlobalActionFilters.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

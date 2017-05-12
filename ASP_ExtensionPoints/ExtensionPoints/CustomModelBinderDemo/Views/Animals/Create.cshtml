@@ -1,0 +1,48 @@
+﻿@model CustomModelBinderDemo.ViewModels.IAnimal
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<button id="btnAddCat">Add Cat</button>
+<button id="btnAddDog">Add Dog</button>
+
+
+@{
+    using (Html.BeginForm("Create", "Animals", FormMethod.Post, new { @Id = "frmCreate" }))
+    {
+        <div id="animalsCollection">
+
+        </div>
+
+        <input type="submit" name="name" value="Create" />
+    }
+}
+
+@section scripts {
+    <script type="text/javascript">
+        var $animalsCollection = $('#frmCreate #animalsCollection');
+        $('#btnAddCat').on('click', function () {
+            appendAnimalInput('cat');
+        });
+
+        $('#btnAddDog').on('click', function () {
+            appendAnimalInput('dog');
+        });
+
+        function appendAnimalInput(type) {
+            var $div = $('<div>');
+            $('<input>').attr({
+                name: 'Name'
+            }).appendTo($div);
+            $('<input>').attr({
+                type: 'hidden',
+                value: type,
+                name: 'TypeOfAnimal'
+            }).appendTo($div);
+
+            $div.appendTo($animalsCollection)
+        }
+    </script>
+}

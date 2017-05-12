@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "TestDate";
+}
+
+<h2>TestDate</h2>
+
+@{
+    using (Html.BeginForm("TestDate", "Home", FormMethod.Post))
+    {
+        <label>User Name</label>
+        @Html.TextBox("date")
+
+        <br />
+
+        <p>Year: @ViewBag.Year Month: @ViewBag.Month Day: @ViewBag.Day</p>
+
+        <input type="submit" value="Login" />
+        <h3>Examples</h3>
+        <p>FR: 24/06/2017</p>
+        <p>EN: 2017/06/24</p>
+    }
+}

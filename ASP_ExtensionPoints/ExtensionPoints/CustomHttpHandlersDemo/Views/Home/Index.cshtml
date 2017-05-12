@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    <button id="imgAsJpg">Image As JPG</button>
+    <button id="imgAsZip">Image As ZIP</button>
+</div>
+
+<div id="result">
+
+</div>
+
+@section Scripts{
+    <script>
+        $('#imgAsJpg').on('click', function () {
+            $.ajax({
+                url: "/content/images/1.jpg",
+                method: 'Get',
+                headers: {
+                    'Accept': 'image/jpg',
+                    'Content-Type': 'image/jpg'
+                },
+                success: function (data) {
+                    //$('#result').add(data);
+                }
+            });
+        });
+
+        $('#imgAsZip').on('click', function () {
+            $.ajax({
+                url: "/content/images/1.jpg",
+                method: 'Get',
+                headers: {
+                    'Accept': 'application/zip',
+                    'Content-Type': 'application/zip'
+                },
+                success: function (data) {
+                    //$('#result').add(data);
+                }
+            });
+        });
+    </script>
+}

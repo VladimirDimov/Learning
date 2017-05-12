@@ -1,0 +1,34 @@
+﻿@model CustomModelBinderDemo.ViewModels.Person
+
+@{
+    ViewBag.Title = "ArrayDemo";
+}
+
+@{
+    using (Html.BeginForm("ArrayDemo", "Home", FormMethod.Post))
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            <label>First Name</label>
+                @Html.TextBoxFor(m => m.FirstName, new { @Value = (char)(i + 65) })
+
+                <label>Last Name</label>
+                @Html.TextBoxFor(m => m.LastName, new { @Value = (char)(i + 80) })
+
+                <br />
+        }
+
+        @*for (int i = 0; i < 5; i++)
+            {
+                <label>First Name</label>
+                @Html.TextBoxFor(m => m.FirstName, new { Name = "people[" + i + "].FirstName", @Value = (char)(i + 65) })
+
+                <label>Last Name</label>
+                @Html.TextBoxFor(m => m.LastName, new { Name = "people[" + i + "].LastName", @Value = (char)(i + 80) })
+
+                <br />
+            }*@
+
+        <input type="submit" value="Post" />
+    }
+}

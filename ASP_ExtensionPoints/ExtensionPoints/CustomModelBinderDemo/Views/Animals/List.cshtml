@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CustomModelBinderDemo.ViewModels.IAnimal>
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@{
+    if (Model != null)
+    {
+        foreach (var animal in Model)
+        {
+            <p>@animal.Say()</p>
+        }
+    }
+}
