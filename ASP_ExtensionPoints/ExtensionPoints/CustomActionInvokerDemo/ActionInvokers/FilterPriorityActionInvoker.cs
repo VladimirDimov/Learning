@@ -26,7 +26,7 @@
         }
 
         /// <summary>
-        /// Moves the filters which inherrit from <see cref="IProprityFilter"/> on the top of the filters collection.
+        /// Moves the filters which inherrit from <see cref="IPriorityFilter"/> on the top of the filters collection.
         /// Keeps the other filters order.
         /// </summary>
         /// <param name="filters">The filters.</param>
@@ -38,7 +38,7 @@
 
             foreach (var filter in filters)
             {
-                if (filter is IProprityFilter)
+                if (filter is IPriorityFilter)
                 {
                     priorityFilters.Add(filter);
                 }

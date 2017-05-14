@@ -1,6 +1,6 @@
 ﻿namespace CustomActionInvokerDemo.Filters
 {
-    public class FilterAttribute2 : BaseFilterAttribute, IProprityFilter
+    public class FilterAttribute2 : BaseFilterAttribute, IPriorityFilter
     {
     }
 }

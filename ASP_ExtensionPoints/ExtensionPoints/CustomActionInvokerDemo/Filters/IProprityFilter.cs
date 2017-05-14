@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CustomActionInvokerDemo.Filters
 {
-    public interface IProprityFilter
+    public interface IPriorityFilter
     {
     }
 }
