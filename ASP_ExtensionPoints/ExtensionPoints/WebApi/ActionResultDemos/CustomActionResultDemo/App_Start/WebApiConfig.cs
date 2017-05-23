@@ -1,8 +1,6 @@
-﻿namespace CustomControllerSelectorDemo
+﻿namespace CustomActionResultDemo
 {
     using System.Web.Http;
-    using System.Web.Http.Controllers;
-    using CustomControllerSelectorDemo.App_Start;
 
     public static class WebApiConfig
     {
@@ -18,8 +16,6 @@
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Services.Replace(typeof(IHttpActionSelector), new CustomActionSelector());
         }
     }
 }

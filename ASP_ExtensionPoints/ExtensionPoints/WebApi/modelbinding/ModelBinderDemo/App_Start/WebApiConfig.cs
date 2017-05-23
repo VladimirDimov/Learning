@@ -1,9 +1,12 @@
-﻿namespace CustomControllerSelectorDemo
-{
-    using System.Web.Http;
-    using System.Web.Http.Controllers;
-    using CustomControllerSelectorDemo.App_Start;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using System.Web.Http.ModelBinding;
+using ModelBinderDemo.App_Start;
 
+namespace ModelBinderDemo
+{
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -18,8 +21,6 @@
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Services.Replace(typeof(IHttpActionSelector), new CustomActionSelector());
         }
     }
 }

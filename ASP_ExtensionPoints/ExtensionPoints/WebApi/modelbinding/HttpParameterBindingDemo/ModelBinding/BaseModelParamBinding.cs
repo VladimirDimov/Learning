@@ -6,7 +6,6 @@
     using System.Web.Http;
     using System.Web.Http.Controllers;
     using System.Web.Http.Metadata;
-    using System.Web.Http.ModelBinding;
     using Models;
 
     public class BaseModelParamBinding : HttpParameterBinding

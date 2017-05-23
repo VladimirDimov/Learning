@@ -1,8 +1,11 @@
-﻿namespace CustomControllerSelectorDemo
+﻿namespace CsvMediaTypeFormatterDemo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
-    using System.Web.Http.Controllers;
-    using CustomControllerSelectorDemo.App_Start;
+    using CsvMediaTypeFormatterDemo.App_Start;
+    using CsvMediaTypeFormatterDemo.Models;
 
     public static class WebApiConfig
     {
@@ -19,7 +22,8 @@
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Services.Replace(typeof(IHttpActionSelector), new CustomActionSelector());
+            config.Formatters.Add(new CsvMediaTypeFormatter<Person>());
+            config.Formatters.Add(new CsvMediaTypeFormatter<Car>());
         }
     }
 }
