@@ -1,0 +1,4 @@
+﻿1.	Show all filters order of execution.
+2.	Show the exception filters won't catch an exception from the low-level pipe line.
+	Demonstrate that to catch exception from delegatin handler must be catched inside outer handler.
+3. What happens if the exception filter throws error.

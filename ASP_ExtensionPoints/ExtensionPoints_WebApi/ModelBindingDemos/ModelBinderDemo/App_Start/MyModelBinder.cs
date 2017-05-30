@@ -1,9 +1,7 @@
 ﻿namespace ModelBinderDemo.App_Start
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Web.Helpers;
     using System.Web.Http.Controllers;
     using System.Web.Http.ModelBinding;
     using Models;
@@ -20,11 +18,11 @@
             var result = new List<IAnimal>();
             foreach (var animal in inputModels)
             {
-                if (animal.Type == "Cat")
+                if (animal.Type == typeof(Cat).Name)
                 {
                     result.Add(new Cat() { Name = animal.Name });
                 }
-                else if (animal.Type == "Dog")
+                else if (animal.Type == typeof(Dog).Name)
                 {
                     result.Add(new Dog() { Name = animal.Name });
                 }
@@ -50,6 +48,7 @@
         {
             var content = actionContext.Request.Content;
             string json = content.ReadAsStringAsync().Result;
+
             return json;
         }
     }

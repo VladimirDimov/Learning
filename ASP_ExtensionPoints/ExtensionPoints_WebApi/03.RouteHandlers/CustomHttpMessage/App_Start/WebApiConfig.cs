@@ -26,7 +26,17 @@
                 defaults: new { id = RouteParameter.Optional, controller = "Home" }
             );
 
-            config.Routes.Add(nameof(PingRoute), new PingRoute());
+            // This implementation reuses the default WebApi implementation.
+            config.Routes.MapHttpRoute(
+                    name: "PingRoute",
+                    routeTemplate: "ping",
+                    defaults: new { },
+                    constraints: null,
+                    handler: new MyMessageHandler()
+                );
+
+            // A some custom checks are required.
+            // config.Routes.Add(nameof(PingRoute), new PingRoute());
         }
 
         public class PingRoute : IHttpRoute
@@ -73,12 +83,17 @@
             {
                 get
                 {
-                    return "Ping";
+                    return "ping";
                 }
             }
 
             public IHttpRouteData GetRouteData(string virtualPathRoot, HttpRequestMessage request)
             {
+                if (request.RequestUri.LocalPath.ToLower() != "/ping")
+                {
+                    return null;
+                }
+
                 return new HttpRouteData(new HttpRoute(this.RouteTemplate, this.Defaults as HttpRouteValueDictionary, this.Constraints as HttpRouteValueDictionary, this.DataTokens as HttpRouteValueDictionary, this.Handler));
             }
 
