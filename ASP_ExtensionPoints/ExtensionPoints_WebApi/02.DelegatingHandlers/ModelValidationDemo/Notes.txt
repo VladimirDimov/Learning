@@ -1,0 +1,2 @@
+﻿Why we add the reponse wraping logic in a delgating handler and not in an action filter?
+If an error prior the action execution occur (ex. Authentication failure) the action filter wont be executed.

@@ -52,6 +52,11 @@ namespace RedirectDemo
 
         public IHttpRouteData GetRouteData(string virtualPathRoot, HttpRequestMessage request)
         {
+            if (!request.RequestUri.LocalPath.ToLower().StartsWith("/api/"))
+            {
+                return null;
+            }
+
             return new HttpRouteData(this);
         }
 

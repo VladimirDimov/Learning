@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
 
 namespace ModelValidationDemo.ResponseHandler
@@ -17,7 +14,6 @@ namespace ModelValidationDemo.ResponseHandler
 
             var wrapedResult = new HttpResponseMessage();
             this.SetHeaders(incomingResult, wrapedResult);
-
 
             object content;
             var responsePackage = new ResponsePackage();
@@ -34,7 +30,6 @@ namespace ModelValidationDemo.ResponseHandler
             }
             else
             {
-                
                 responsePackage.Result = ((System.Net.Http.ObjectContent)incomingResult.Content)?.Value;
             }
 
@@ -79,7 +74,5 @@ namespace ModelValidationDemo.ResponseHandler
                 outcomingResponse.Headers.Add(header.Key, header.Value);
             }
         }
-
-
     }
 }

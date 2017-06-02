@@ -18,7 +18,15 @@
                 constraints: new { controller = "^(?!.*?api).*" }
             );
 
-            config.Routes.Add(nameof(RedirectToApiRoute), new RedirectToApiRoute());
+            config.Routes.MapHttpRoute(
+                name: "RedirectRoute",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional },
+                constraints: null,
+                handler: new RedirectToApiMessageHandler()
+            );
+
+            //config.Routes.Add(nameof(RedirectToApiRoute), new RedirectToApiRoute());
         }
     }
 }

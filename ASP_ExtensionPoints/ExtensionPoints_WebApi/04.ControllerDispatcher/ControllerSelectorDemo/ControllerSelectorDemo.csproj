@@ -148,9 +148,7 @@
       <HintPath>..\..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FilterProviders\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Compile Include="App_Start\BypassCacheSelector.cs" />
     <Compile Include="App_Start\CustomFilterProvider.cs" />

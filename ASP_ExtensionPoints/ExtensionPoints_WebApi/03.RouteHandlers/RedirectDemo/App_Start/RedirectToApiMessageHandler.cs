@@ -8,12 +8,12 @@
 
     internal class RedirectToApiMessageHandler : HttpMessageHandler
     {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var redirectLocation = new Uri(request.RequestUri.Authority + request.RequestUri.AbsolutePath.Substring(4));
+            var redirectLocation = new Uri(request.RequestUri.Scheme + "://" + request.RequestUri.Authority + request.RequestUri.AbsolutePath.Substring(4));
             var redirectResult = new RedirectResult(redirectLocation, request);
 
-            return redirectResult.ExecuteAsync(cancellationToken);
+            return await redirectResult.ExecuteAsync(cancellationToken);
         }
     }
 }
