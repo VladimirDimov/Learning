@@ -11,18 +11,43 @@
     {
         public override Task<HttpResponseMessage> InvokeActionAsync(HttpActionContext actionContext, CancellationToken cancellationToken)
         {
-            var result = base.InvokeActionAsync(actionContext, cancellationToken);
-
-            if (result.Exception != null)
+            return Task<HttpResponseMessage>.Run(async () =>
             {
-                return Task.Run<HttpResponseMessage>(() => new HttpResponseMessage(HttpStatusCode.InternalServerError)
-                {
-                    Content = new StringContent(result.Exception.Message),
-                    ReasonPhrase = "Error"
-                });
-            }
+                // No need to use try/catch. The default invoker does this
+                var resultTask = base.InvokeActionAsync(actionContext, cancellationToken);
 
-            return result;
+                if (resultTask.Exception != null)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.InternalServerError)
+                    {
+                        Content = new StringContent(resultTask.Exception.Message),
+                        ReasonPhrase = "Error"
+                    };
+                }
+
+                var result = await resultTask;
+                if (!result.IsSuccessStatusCode)
+                {
+                    var message = result;
+
+                    switch (result.StatusCode)
+                    {
+                        case HttpStatusCode.Unauthorized:
+                            message.Content = result.Content;
+                            message.ReasonPhrase = "Unauthorized";
+                            var errorResult = new { Error = "The user is unauthorized" };
+                            message.Content = new ObjectContent(errorResult.GetType(), errorResult, GlobalConfiguration.Configuration.Formatters.JsonFormatter);
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    return message;
+                }
+
+                return result;
+            });
         }
     }
 }

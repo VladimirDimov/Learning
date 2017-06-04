@@ -19,7 +19,7 @@
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Services.Replace(typeof(IHttpActionSelector), new ActionOverloadSelector());
+            config.Services.Replace(typeof(IHttpActionSelector), new CustomActionSelector());
         }
     }
 }

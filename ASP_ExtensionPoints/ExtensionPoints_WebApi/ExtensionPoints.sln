@@ -11,9 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.ControllerDispatcher", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyResolver", "AssemblyResolver", "{DC6CF8A2-B681-4BAA-9DAD-4B1BD695999B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModelBindingDemos", "ModelBindingDemos", "{8A201748-34A1-499A-B653-942AF99F1D59}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07.ModelBindingDemos", "07.ModelBindingDemos", "{8A201748-34A1-499A-B653-942AF99F1D59}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActionResultDemos", "ActionResultDemos", "{E1482A1F-B219-4C9B-B2A1-000031F1A158}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "08.ActionResultDemos", "08.ActionResultDemos", "{E1482A1F-B219-4C9B-B2A1-000031F1A158}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.HttpServer", "01.HttpServer", "{B3C88302-EBAA-42DA-9EF5-84FE43B400CD}"
 EndProject

@@ -17,8 +17,8 @@
         {
             if (actionContext.ControllerContext.Configuration.DependencyResolver != null)
             {
-                var resolved = actionContext.Request.GetDependencyScope().GetService(Descriptor.ParameterType);
-                actionContext.ActionArguments[Descriptor.ParameterName] = resolved;
+                var resolved = actionContext.Request.GetDependencyScope().GetService(this.Descriptor.ParameterType);
+                actionContext.ActionArguments[this.Descriptor.ParameterName] = resolved;
             }
 
             return Task.FromResult(0);

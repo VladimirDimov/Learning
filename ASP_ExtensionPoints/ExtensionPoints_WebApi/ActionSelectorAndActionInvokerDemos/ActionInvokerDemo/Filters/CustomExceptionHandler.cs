@@ -8,9 +8,7 @@
     {
         public Task HandleAsync(ExceptionHandlerContext context, CancellationToken cancellationToken)
         {
-            return Task.Factory.StartNew(() =>
-            {
-            });
+            return Task.Run(delegate { });
         }
     }
 }

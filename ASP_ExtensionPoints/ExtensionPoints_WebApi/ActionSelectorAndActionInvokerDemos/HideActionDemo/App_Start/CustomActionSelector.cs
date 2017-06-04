@@ -5,7 +5,7 @@
     using System.Web.Http.Controllers;
     using Controllers;
 
-    public class ActionOverloadSelector : ApiControllerActionSelector
+    public class CustomActionSelector : ApiControllerActionSelector
     {
         public override HttpActionDescriptor SelectAction(HttpControllerContext controllerContext)
         {
@@ -15,7 +15,7 @@
 
             if (isHidden)
             {
-                throw new HttpException(410, "The resource has been deprecated.");
+                throw new HttpException(410, $"The resource {controllerContext.Request.RequestUri.AbsoluteUri} has been deprecated.");
             }
 
             return action;

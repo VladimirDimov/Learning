@@ -1,0 +1,5 @@
+﻿1. Demonstrate global exception handling inside Custom Action Invoker.
+
+2. Demostrate how exception filter is hit only on System.Exception-s.
+	To do that the action invoker must return Task<HttpResponseMessage> and the exceptions handling part
+	of the code must be commented.

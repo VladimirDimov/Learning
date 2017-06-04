@@ -10,17 +10,11 @@
     {
         public IHttpActionResult Get()
         {
-            //throw new HttpResponseException(System.Net.HttpStatusCode.BadRequest);
-            throw new ArgumentException();
+            throw new HttpResponseException(System.Net.HttpStatusCode.Unauthorized);
+            throw new ArgumentException("This is a test exception");
+            throw new HttpResponseException(System.Net.HttpStatusCode.BadRequest);
 
             //return this.Ok("OK!");
-        }
-
-        public IHttpActionResult Post()
-        {
-            throw new ArgumentException();
-
-            //return this.Ok("Post!");
         }
     }
 }

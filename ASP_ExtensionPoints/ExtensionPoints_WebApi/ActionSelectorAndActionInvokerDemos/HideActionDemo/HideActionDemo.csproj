@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="App_Start\ActionOverloadSelector.cs" />
+    <Compile Include="App_Start\CustomActionSelector.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GoneAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -9,6 +9,8 @@
         public MyControllerTypeResolver(Type baseControllertype)
             : base(type =>
             {
+                // No problem to use reflection because this logic is cached!
+
                 var meetCommonRequirements =
                 type.IsClass &
                 type.IsVisible &
