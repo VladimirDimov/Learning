@@ -1,7 +1,7 @@
 ﻿namespace TripExchange.Web
 {
     using System.Web.Http;
-
+    using System.Web.Http.Cors;
     using Microsoft.Owin.Security.OAuth;
 
     using Newtonsoft.Json.Serialization;
@@ -15,13 +15,20 @@
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            // Cors
+            //var corsConfig = new EnableCorsAttribute(origins: "*", headers: "*", methods: "*", exposedHeaders: "*");
+            //config.EnableCors(corsConfig);
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional });
+                defaults: new
+                {
+                    id = RouteParameter.Optional
+                });
 
             var jsonFormatter = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
