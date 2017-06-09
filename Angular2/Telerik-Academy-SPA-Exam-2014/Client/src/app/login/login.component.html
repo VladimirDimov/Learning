@@ -1,27 +1,20 @@
-<form class="form-horizontal">
+<form class="form-horizontal" [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
     <fieldset>
         <legend>Login</legend>
 
         <div class="form-group">
             <label for="inputEmail" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+                <input type="text" class="form-control" id="inputEmail" placeholder="Email" [formControl]="loginForm.controls['username']">
+                <div *ngIf="validation.isShowErrors('username')" class="alert-danger">{{validation.getFormErrors('username')}}</div>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'has-error': validation.isShowErrors('password')}">
             <label for="inputPassword" class="col-lg-2 control-label">Password</label>
             <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Confirm Password</label>
-            <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                <div class="checkbox">
-                </div>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" [formControl]="loginForm.controls['password']">
+                <div *ngIf="validation.isShowErrors('password')" class="alert-danger">{{validation.getFormErrors('password')}}</div>
             </div>
         </div>
 

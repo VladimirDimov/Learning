@@ -2,7 +2,7 @@
     <fieldset>
         <legend>Login</legend>
 
-        <div class="form-group" [ngClass]="{'has-error': registerForm.controls['email'].hasError && isAttemptedSubmit}">
+        <div class="form-group" [ngClass]="{'has-error': isShowErrors('email')}">
             <label for="inputEmail" class="col-lg-2 control-label">Email</label>
             <div class="col-lg-10">
                 <input type="text" class="form-control" id="inputEmail" placeholder="Email" [formControl]="registerForm.controls['email']">
@@ -10,13 +10,11 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" [ngClass]="{'has-error': isShowErrors('password')}">
             <label for="inputPassword" class="col-lg-2 control-label">Password</label>
             <div class="col-lg-10">
                 <input type="password" class="form-control" id="inputPassword" placeholder="Password" [formControl]="registerForm.controls['password']">
-                <div *ngIf="registerForm.controls['password'].hasError('required') && !registerForm.controls['password'].pristine" class="alert-danger">The password is required.</div>
-                <div *ngIf="registerForm.controls['password'].hasError('minlength')" class="alert-danger">The password must be at least 5 symbols.{{registerForm.controls['password'].getError('minLength')}}</div>
-
+                <div *ngIf="isShowErrors('password')" class="alert-danger">{{getFormErrors('password')}}</div>
             </div>
         </div>
 

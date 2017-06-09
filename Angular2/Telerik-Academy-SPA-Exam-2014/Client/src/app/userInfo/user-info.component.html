@@ -1,0 +1,11 @@
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge">{{userInfo?.email}}</span> Email
+    </li>
+    <li class="list-group-item" *ngIf="userInfo?.isDriver">
+        <span class="badge">{{userInfo?.car}}</span> Car
+    </li>
+    <li class="list-group-item">
+        <span class="badge">{{userInfo?.isDriver ? 'Yes' : 'No'}}</span> Is Driver
+    </li>
+</ul>

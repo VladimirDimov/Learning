@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
+import { IfAuthenticatedDirective } from './directives/ifAuthenticated.directive';
 
 @Component({
   selector: 'app-root',

@@ -21,25 +21,25 @@
 
         public override HttpControllerDescriptor SelectController(HttpRequestMessage request)
         {
-//#if DEBUG
-//            // Uncomment to enable caching
-//            //return base.SelectController(request);
-//            var assemblies = _configuration.Services.GetAssembliesResolver().GetAssemblies();
-//            var types = new List<Type>();
-//            foreach (var assembly in assemblies)
-//            {
-//                types.AddRange(assembly.GetTypes());
-//            }
+#if DEBUG
+            // Uncomment to enable caching
+            //return base.SelectController(request);
+            var assemblies = _configuration.Services.GetAssembliesResolver().GetAssemblies();
+            var types = new List<Type>();
+            foreach (var assembly in assemblies)
+            {
+                types.AddRange(assembly.GetTypes());
+            }
 
-//            var matchedTypes = types.Where(i => typeof(IHttpController).IsAssignableFrom(i)).ToList();
-//            var controllerName = base.GetControllerName(request);
-//            var matchedController =
-//                matchedTypes.FirstOrDefault(i => i.Name.ToLower() == controllerName.ToLower() + "controller");
+            var matchedTypes = types.Where(i => typeof(IHttpController).IsAssignableFrom(i)).ToList();
+            var controllerName = base.GetControllerName(request);
+            var matchedController =
+                matchedTypes.FirstOrDefault(i => i.Name.ToLower() == controllerName.ToLower() + "controller");
 
-//            return new HttpControllerDescriptor(_configuration, controllerName, matchedController);
-//#else
+            return new HttpControllerDescriptor(_configuration, controllerName, matchedController);
+#else
             return base.SelectController(request);
-//#endif
+#endif
         }
     }
 }

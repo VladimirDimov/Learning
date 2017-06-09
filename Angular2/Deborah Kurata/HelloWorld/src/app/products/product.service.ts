@@ -22,9 +22,4 @@ export class ProductService {
                 return Observable.throw(err.json().error || 'Server error');
             });
     }
-
-    private customValidator(control: Control) {
-        // check if control is equal to the password1 control
-        return {isEqual: control.value === this.registerForm.controls['password1'].value};
-    }
 }

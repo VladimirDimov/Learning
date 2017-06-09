@@ -1,0 +1,4 @@
+﻿The example shows custom implementation of the controller instantiation.
+
+This example in fact overrides the whole cycle of selector-typeResolver-assemblyResolver.
+Of course the custom controller selector may be implemented which callse the default typeReolver.
