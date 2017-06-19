@@ -6,6 +6,7 @@ import { IUserInfoModel } from "../models/user-info.model";
     selector: 'cp-userInfo',
     templateUrl: './user-info.component.html',
 })
+
 export class UserInfoComponent implements OnInit {
 
     constructor(private _usersService: UsersService)

@@ -11,6 +11,7 @@ export class UsersService {
     getUserInfo(): Observable<IUserInfoModel> {
         return Observable.create(observer => {
             this._http.get('/api/users/userInfo').subscribe(data => {
+                debugger;
                 return observer.next(<IUserInfoModel>data.json());
             }, err => {
                 return observer.throw(err.json());

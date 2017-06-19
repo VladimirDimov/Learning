@@ -20,6 +20,14 @@ import { ToastrModule } from 'toastr-ng2';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { IfAuthenticatedDirective } from "./directives/ifAuthenticated.directive";
 import { UsersService } from "./services/users.service";
+import { StatsComponent } from "./stats/stats.component";
+
+// Redux
+import { NgReduxModule, DevToolsExtension } from "ng2-redux/lib";
+import { StatsActions } from "./stats/stats.actions";
+import { RootReducerProvider } from "./redux/reducers";
+import StatsReducer from "./stats/stats.reducer";
+import { StatsService } from "./stats/stats.service";
 
 @NgModule({
   declarations: [
@@ -31,7 +39,8 @@ import { UsersService } from "./services/users.service";
     HomeComponent,
     UserInfoComponent,
     // Directives
-    IfAuthenticatedDirective
+    IfAuthenticatedDirective,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +54,26 @@ import { UsersService } from "./services/users.service";
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'userInfo', component: UserInfoComponent }
-    ])
+    ]),
+    // Redux
+    NgReduxModule
   ],
-  providers: [HttpRequester, GlobalConstants, AuthService, ValidationService, CookieService, UsersService],
+
+  providers: [
+    HttpRequester,
+    GlobalConstants,
+    AuthService,
+    ValidationService,
+    CookieService,
+    UsersService,
+    StatsActions,
+    RootReducerProvider,
+    StatsReducer,
+    StatsService],
+
   exports: [IfAuthenticatedDirective],
+
   bootstrap: [AppComponent],
 })
+
 export class AppModule { }
