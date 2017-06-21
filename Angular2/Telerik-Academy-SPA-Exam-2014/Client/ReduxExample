@@ -1,0 +1,55 @@
+//
+visit 1
+visit 2
+visit 3
+
+
+component.js
+@select(visitsLoading)
+@select(visits)
+@select(visitsError)
+html:
+<my-loading-component *ngIf=visitsLoading | async>
+ul
+    li ngFor=visits | async
+    visits.id
+    visits.Name
+
+<my-error-component *ngIf=visitsError | async [err]=visitsError | async>
+
+ng.stor.subscribe()
+
+actioncreator.fetchVisits()
+
+
+=================================================================================================
+
+service.js
+    getVisits()
+
+=================================================================================================
+
+actioncreator.js
+fetchVisits() {
+    ng.redux.dispatch({type: "FETCHING_VISITS})
+    service.getVisits()
+    .subscribe(data => {
+        ng.redux.dispatch({type: "VISITS_FETCHED, payload: data})
+    }, err => {
+        ng.redux.dispatch({type: "FETCHING_VISITS_FAILED, err})
+        retry
+    }
+}
+
+=================================================================================================
+
+reducer.js
+switch (action.type)
+case "FETCHING_VISITS"
+    store.visitsLoading = true;
+case "VISITS_FETCHED"
+    store.visits = action.payload
+    store.visitsLoading = false;
+    store.err = null;
+case "FETCHING_VISITS_FAILED"
+    store.visitsError = err;

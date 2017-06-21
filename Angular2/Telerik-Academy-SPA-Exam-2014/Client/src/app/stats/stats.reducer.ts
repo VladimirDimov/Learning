@@ -7,10 +7,6 @@ import { IStatsModel  } from "./stats.model";
 @Injectable()
 export default class StatsReducer {
 
-    // constructor(
-    //     private statsService: StatsService)
-    // { }
-
     public reduce(state = {}, action: Action) {
         switch (action.type) {
             case GET_ALL:

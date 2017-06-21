@@ -50,6 +50,10 @@ export class HttpRequester {
                     messages.push(errorBody.error_description);
                 }
 
+                if (errorBody.message) {
+                    messages.push(errorBody.message);
+                }
+
                 var err = Observable.throw(messages);
 
                 return err;

@@ -22,7 +22,7 @@
         {
             return Task.Run(() =>
             {
-                throw new ArgumentException();
+                //throw new ArgumentException();
                 Trace.WriteLine($"{this.GetType().Name} is executing. {From}");
             });
         }

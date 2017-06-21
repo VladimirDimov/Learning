@@ -3,7 +3,7 @@
     using System.Web.Http;
     using System.Web.Mvc;
 
-    public class HomeController : ApiController
+    public class HomeController : ApiController/*BaseController*/
     {
         public IHttpActionResult Get()
         {

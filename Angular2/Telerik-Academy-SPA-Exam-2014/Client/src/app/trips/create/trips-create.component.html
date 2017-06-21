@@ -1,0 +1,49 @@
+<h1>{{title}}</h1>
+<h1>{{this.isCreatingTrip | async}}</h1>
+<form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <fieldset>
+        <legend>Login</legend>
+
+        <div class="form-group" [ngClass]="{'has-error': validation.isShowErrors('from')}">
+            <label for="inputFrom" class="col-lg-2 control-label">From</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputFrom" placeholder="From" [formControl]="form.controls['from']">
+                <div *ngIf="validation.isShowErrors('from')" class="alert-danger">{{validation.getFormErrors('from')}}</div>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': validation.isShowErrors('to')}">
+            <label for="inputto" class="col-lg-2 control-label">To</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputto" placeholder="To" [formControl]="form.controls['to']">
+                <div *ngIf="validation.isShowErrors('to')" class="alert-danger">{{validation.getFormErrors('to')}}</div>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': validation.isShowErrors('availableSeats')}">
+            <label for="inputavailableSeats" class="col-lg-2 control-label">availableSeats</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputavailableSeats" placeholder="availableSeats" [formControl]="form.controls['availableSeats']">
+                <div *ngIf="validation.isShowErrors('availableSeats')" class="alert-danger">{{validation.getFormErrors('availableSeats')}}</div>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': validation.isShowErrors('departureTime')}">
+            <label for="inputdepartureTime" class="col-lg-2 control-label">departureTime</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputdepartureTime" placeholder="departureTime" [formControl]="form.controls['departureTime']">
+                <div *ngIf="validation.isShowErrors('departureTime')" class="alert-danger">{{validation.getFormErrors('departureTime')}}</div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Create</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

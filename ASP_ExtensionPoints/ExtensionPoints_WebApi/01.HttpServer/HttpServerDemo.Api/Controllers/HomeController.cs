@@ -6,7 +6,7 @@
     {
         public IHttpActionResult Get()
         {
-            return this.Ok("This is GET from HOME");
+            return this.Ok("Home Page");
         }
     }
 }

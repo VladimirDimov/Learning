@@ -10,6 +10,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from "./home/home.component";
 import { UserInfoComponent } from "./userInfo/user-info.component";
+import { StatsComponent } from "./stats/stats.component";
+import { TripsCreateComponent } from "./trips/create/trips-create.component";
 
 import { HttpRequester } from './common/http-requester';
 import { GlobalConstants } from './common/global-constants';
@@ -20,7 +22,7 @@ import { ToastrModule } from 'toastr-ng2';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { IfAuthenticatedDirective } from "./directives/ifAuthenticated.directive";
 import { UsersService } from "./services/users.service";
-import { StatsComponent } from "./stats/stats.component";
+import { TripsService } from "./trips/trips.service";
 
 // Redux
 import { NgReduxModule, DevToolsExtension } from "ng2-redux/lib";
@@ -28,6 +30,8 @@ import { StatsActions } from "./stats/stats.actions";
 import { RootReducerProvider } from "./redux/reducers";
 import StatsReducer from "./stats/stats.reducer";
 import { StatsService } from "./stats/stats.service";
+import { TripsActions } from "./trips/trips.actions";
+import TripsReducer from "./trips/trips.reducer";
 
 @NgModule({
   declarations: [
@@ -40,7 +44,8 @@ import { StatsService } from "./stats/stats.service";
     UserInfoComponent,
     // Directives
     IfAuthenticatedDirective,
-    StatsComponent
+    StatsComponent,
+    TripsCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,8 @@ import { StatsService } from "./stats/stats.service";
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
-      { path: 'userInfo', component: UserInfoComponent }
+      { path: 'userInfo', component: UserInfoComponent },
+      { path: 'trips/create', component: TripsCreateComponent }
     ]),
     // Redux
     NgReduxModule
@@ -69,7 +75,10 @@ import { StatsService } from "./stats/stats.service";
     StatsActions,
     RootReducerProvider,
     StatsReducer,
-    StatsService],
+    StatsService,
+    TripsActions,
+    TripsService,
+    TripsReducer],
 
   exports: [IfAuthenticatedDirective],
 

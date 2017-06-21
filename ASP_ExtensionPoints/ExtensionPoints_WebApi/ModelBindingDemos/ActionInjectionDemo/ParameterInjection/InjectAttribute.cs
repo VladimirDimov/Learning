@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-
-namespace ActionInjectionDemo.ParameterInjection
+﻿namespace ActionInjectionDemo.ParameterInjection
 {
+    using System;
+    using System.Web.Http;
+    using System.Web.Http.Controllers;
+
     [AttributeUsage(AttributeTargets.Parameter)]
     public class InjectAttribute : ParameterBindingAttribute
     {

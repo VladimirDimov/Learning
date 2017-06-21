@@ -9,7 +9,7 @@
     {
         public override Task OnExceptionAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
         {
-            //throw new ArgumentException();
+            throw new ArgumentException();
             return base.OnExceptionAsync(actionExecutedContext, cancellationToken);
         }
     }

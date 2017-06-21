@@ -7,17 +7,20 @@
 
     public class ExceptionHandlerMessageHandler : DelegatingHandler
     {
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             try
             {
-                return base.SendAsync(request, cancellationToken);
+                var resultTask = await  base.SendAsync(request, cancellationToken);
+
+                return resultTask;
             }
             catch (System.Exception ex)
             {
-                return Task.Run(() =>
+                return await Task.Run(() =>
                  {
                      var result = new { Message = ex.Message };
+
                      return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest)
                      {
                          Content = new ObjectContent(result.GetType(), result, GlobalConfiguration.Configuration.Formatters.JsonFormatter)

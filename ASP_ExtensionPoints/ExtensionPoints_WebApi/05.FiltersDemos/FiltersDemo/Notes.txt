@@ -2,3 +2,7 @@
 2.	Show the exception filters won't catch an exception from the low-level pipe line.
 	Demonstrate that to catch exception from delegatin handler must be catched inside outer handler.
 3. What happens if the exception filter throws error.
+4. AuthenticationFilter1 is executong 2 times because AllowMultiple=true.
+5. Show how to implement OnActionExecuting and OnActionExecuted when inherrit IActionFilter
+6. Explain that exception filters can catch exceptions that occur nly in the ApiController.ExecuteAsync method.
+	This method calls all the filters, action, etc..

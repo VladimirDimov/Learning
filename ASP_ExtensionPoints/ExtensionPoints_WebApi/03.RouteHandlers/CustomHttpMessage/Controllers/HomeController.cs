@@ -1,4 +1,4 @@
-﻿namespace WebApi.RouteHandlers.CustomHttpMessage.Controllers
+﻿namespace WebApi.RouteHandlers.CustomHttpMessageDemo.Controllers
 {
     using System.Web.Http;
 

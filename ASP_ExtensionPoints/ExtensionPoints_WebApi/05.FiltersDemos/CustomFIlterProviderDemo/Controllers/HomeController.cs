@@ -6,10 +6,10 @@
     [CustomControllerFilter]
     public class HomeController : ApiController
     {
+        //[SkipControllerFilterAttributes]
         [CustomActionFilter1]
         [CustomActionFilter2]
         [PriorityFilter]
-        //[SkipControllerFilterAttributes]
         public IHttpActionResult Get()
         {
             return this.Ok("OK!");

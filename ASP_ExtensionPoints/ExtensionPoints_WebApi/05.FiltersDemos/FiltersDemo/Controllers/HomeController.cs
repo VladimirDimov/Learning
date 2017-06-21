@@ -1,7 +1,7 @@
 ﻿namespace ActionFIltersDemo.Controllers
 {
+    using System;
     using System.Web.Http;
-    using System.Web.Http.Filters;
     using Filters;
 
     [ActionFilter2]
@@ -13,6 +13,7 @@
         [AuthenticationFilter1(From = "From Action")]
         public IHttpActionResult Get()
         {
+            throw new ArgumentException();
             return this.Ok("Home");
         }
     }
