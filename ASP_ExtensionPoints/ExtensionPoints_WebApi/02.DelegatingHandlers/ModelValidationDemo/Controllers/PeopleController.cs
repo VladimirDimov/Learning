@@ -31,9 +31,11 @@
             //    return this.BadRequest(ModelState);
             //}
 
+            //throw new ArgumentException("This is a test exception");
+
             people.Add(model);
 
-            return this.Ok();
+            return this.Ok(model);
         }
     }
 }

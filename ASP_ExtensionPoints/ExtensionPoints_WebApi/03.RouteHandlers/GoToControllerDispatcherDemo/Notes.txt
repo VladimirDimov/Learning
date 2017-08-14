@@ -1,0 +1,3 @@
+﻿If I use a route specific delegating handler and I want to dispatch the request to the
+controller dispatcher I have to set the inner handler of the delegating handler to the
+controller dispatcher handler. See the constructor of thr CustomDelegatingHandler.

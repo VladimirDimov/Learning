@@ -21,9 +21,9 @@
 
         public override HttpControllerDescriptor SelectController(HttpRequestMessage request)
         {
-#if DEBUG
             // Uncomment to enable caching
             //return base.SelectController(request);
+#if DEBUG
             var assemblies = _configuration.Services.GetAssembliesResolver().GetAssemblies();
             var types = new List<Type>();
             foreach (var assembly in assemblies)

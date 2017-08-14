@@ -3,3 +3,13 @@
 2. Demostrate how exception filter is hit only on System.Exception-s.
 	To do that the action invoker must return Task<HttpResponseMessage> and the exceptions handling part
 	of the code must be commented.
+
+3. Why only the system exceptions are caught in the exception filter?
+	You can customize how Web API handles exceptions by writing an exception filter. 
+	An exception filter is executed when a controller method throws any unhandled exception 
+	that is not an HttpResponseException exception. The HttpResponseException type is a special 
+	case, because it is designed specifically for returning an HTTP response.
+	https://docs.microsoft.com/en-us/aspnet/web-api/overview/error-handling/exception-handling
+
+
+

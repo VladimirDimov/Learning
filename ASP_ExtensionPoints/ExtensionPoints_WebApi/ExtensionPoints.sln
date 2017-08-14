@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.DelegatingHandlers", "02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.ControllerDispatcher", "04.ControllerDispatcher", "{49A2E6B8-4CE3-4635-9D27-5F80C25EAF62}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyResolver", "AssemblyResolver", "{DC6CF8A2-B681-4BAA-9DAD-4B1BD695999B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.3.AssemblyResolver", "4.3.AssemblyResolver", "{DC6CF8A2-B681-4BAA-9DAD-4B1BD695999B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07.ModelBindingDemos", "07.ModelBindingDemos", "{8A201748-34A1-499A-B653-942AF99F1D59}"
 EndProject
@@ -29,9 +29,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyResolverDemo", "04.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyResolverDemo.OtherProject", "04.ControllerDispatcher\AssemblyResolver\AssemblyResolverDemo.OtherProject\AssemblyResolverDemo.OtherProject.csproj", "{0BFF0286-F5BB-4A04-BEF5-6040EA1D6726}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerSelectorDemo", "04.ControllerDispatcher\ControllerSelectorDemo\ControllerSelectorDemo.csproj", "{9E0269CA-6544-4B7C-A12F-23DCD0A91285}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.1.ControllerSelectorDemo", "04.ControllerDispatcher\ControllerSelectorDemo\4.1.ControllerSelectorDemo.csproj", "{9E0269CA-6544-4B7C-A12F-23DCD0A91285}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTypeResolverDemo", "04.ControllerDispatcher\ControllerTypeResolverDemo\ControllerTypeResolverDemo.csproj", "{419663E4-02CC-494D-B60F-FDB1D27E161E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.2.ControllerTypeResolverDemo", "04.ControllerDispatcher\ControllerTypeResolverDemo\4.2.ControllerTypeResolverDemo.csproj", "{419663E4-02CC-494D-B60F-FDB1D27E161E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionResultDemo", "ActionResultDemos\CustomActionResultDemo\ActionResultDemo.csproj", "{E40E81F2-29F1-4072-87BA-5E6379E997A0}"
 EndProject
@@ -45,15 +45,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBinderDemo", "ModelBin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedirectDemo", "03.RouteHandlers\RedirectDemo\RedirectDemo.csproj", "{C7199DB0-3016-4B37-8B32-A4682F26325F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerActivatorDemo", "04.ControllerDispatcher\ControllerActivatorDemo\ControllerActivatorDemo.csproj", "{AD05F0BC-FCDE-4215-AEDA-AEA5AA6FB9A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.4.ControllerActivatorDemo", "04.ControllerDispatcher\ControllerActivatorDemo\4.4.ControllerActivatorDemo.csproj", "{AD05F0BC-FCDE-4215-AEDA-AEA5AA6FB9A7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06.ActionSelectorAndActionInvokerDemo", "06.ActionSelectorAndActionInvokerDemo", "{6FD13589-0F4E-4737-83CF-DB20CF749869}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInvokerDemo", "ActionSelectorAndActionInvokerDemos\ActionInvokerDemo\ActionInvokerDemo.csproj", "{DB15765C-55AF-4F56-A471-96E087FDFE02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.3.ActionInvokerDemo", "ActionSelectorAndActionInvokerDemos\ActionInvokerDemo\6.3.ActionInvokerDemo.csproj", "{DB15765C-55AF-4F56-A471-96E087FDFE02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultActionSelectorDemo", "ActionSelectorAndActionInvokerDemos\DefaultActionSelectorDemo\DefaultActionSelectorDemo.csproj", "{D4335CF4-A479-49EE-8025-83A3D5FBCBB5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HideActionDemo", "ActionSelectorAndActionInvokerDemos\HideActionDemo\HideActionDemo.csproj", "{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.1.DefaultActionSelectorDemo", "ActionSelectorAndActionInvokerDemos\DefaultActionSelectorDemo\6.1.DefaultActionSelectorDemo.csproj", "{D4335CF4-A479-49EE-8025-83A3D5FBCBB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05.FiltersDemos", "05.FiltersDemos", "{0CA34E58-2B88-4443-AB91-F62F2DF3D22C}"
 EndProject
@@ -74,6 +72,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BinderDemos", "BinderDemos", "{2755D180-5815-49F4-A143-61804B35BD19}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpParameterDemos", "HttpParameterDemos", "{95F6C9A0-A62C-4202-B577-6D15BA853F15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2.CustomActionSelectorDemo", "ActionSelectorAndActionInvokerDemos\CustomActionSelectorDemo\6.2.CustomActionSelectorDemo.csproj", "{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,10 +149,6 @@ Global
 		{D4335CF4-A479-49EE-8025-83A3D5FBCBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4335CF4-A479-49EE-8025-83A3D5FBCBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4335CF4-A479-49EE-8025-83A3D5FBCBB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB7976F0-41C4-4D56-A846-391484F5B0C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB7976F0-41C4-4D56-A846-391484F5B0C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB7976F0-41C4-4D56-A846-391484F5B0C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -177,6 +173,10 @@ Global
 		{A1C5BFEB-2C74-44CD-8B67-3DD5B6DFC676}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1C5BFEB-2C74-44CD-8B67-3DD5B6DFC676}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1C5BFEB-2C74-44CD-8B67-3DD5B6DFC676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -200,7 +200,6 @@ Global
 		{AD05F0BC-FCDE-4215-AEDA-AEA5AA6FB9A7} = {49A2E6B8-4CE3-4635-9D27-5F80C25EAF62}
 		{DB15765C-55AF-4F56-A471-96E087FDFE02} = {6FD13589-0F4E-4737-83CF-DB20CF749869}
 		{D4335CF4-A479-49EE-8025-83A3D5FBCBB5} = {6FD13589-0F4E-4737-83CF-DB20CF749869}
-		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897} = {6FD13589-0F4E-4737-83CF-DB20CF749869}
 		{FB7976F0-41C4-4D56-A846-391484F5B0C6} = {0CA34E58-2B88-4443-AB91-F62F2DF3D22C}
 		{C63424AE-693C-4365-9728-B9E9F53DE415} = {0CA34E58-2B88-4443-AB91-F62F2DF3D22C}
 		{C26BCC9F-4608-43FF-B803-60FD8191EB5F} = {2755D180-5815-49F4-A143-61804B35BD19}
@@ -209,5 +208,6 @@ Global
 		{9DE2B545-5C8B-4F89-8FB2-A5B891BCFEB6} = {8A201748-34A1-499A-B653-942AF99F1D59}
 		{2755D180-5815-49F4-A143-61804B35BD19} = {8A201748-34A1-499A-B653-942AF99F1D59}
 		{95F6C9A0-A62C-4202-B577-6D15BA853F15} = {8A201748-34A1-499A-B653-942AF99F1D59}
+		{8397D796-9C3F-4457-ABBC-8F4B2F9B9897} = {6FD13589-0F4E-4737-83CF-DB20CF749869}
 	EndGlobalSection
 EndGlobal

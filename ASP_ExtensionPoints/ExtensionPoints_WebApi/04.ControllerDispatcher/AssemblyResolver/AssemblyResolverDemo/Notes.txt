@@ -1,0 +1,3 @@
+﻿Show how when using the custom rseilver the about page is working. Then comment the
+line in the AppConfig that loads the custom assembly resolver and see that the about
+page is not available.

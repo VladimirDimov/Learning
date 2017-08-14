@@ -6,6 +6,7 @@
     {
         public IHttpActionResult Get()
         {
+            var requestHeaders = this.Request.Headers;
             return this.Ok("Home Page");
         }
     }

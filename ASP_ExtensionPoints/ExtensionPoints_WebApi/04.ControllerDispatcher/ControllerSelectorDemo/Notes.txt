@@ -2,3 +2,8 @@
 
 This example in fact overrides the whole cycle of selector-typeResolver-assemblyResolver.
 Of course the custom controller selector may be implemented which calls the default typeReolver.
+
+Beacause the ControllerDescriptor is cached some logic (like providing controller filters)
+is executed only once. This may not be very useful in development mode. This example shows
+how to bypass the caching logic. See that the GetFilters() method inside the CustomFilterProvider
+is executed on each request when in debug mode. If not in debug mode it is executed only once.
