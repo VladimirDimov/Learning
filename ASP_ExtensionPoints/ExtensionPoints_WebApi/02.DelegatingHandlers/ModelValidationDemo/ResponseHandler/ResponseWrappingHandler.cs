@@ -10,7 +10,7 @@ namespace ModelValidationDemo.ResponseHandler
     {
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var incomingResult = await base.SendAsync(request, cancellationToken);
+            HttpResponseMessage incomingResult = await base.SendAsync(request, cancellationToken);
 
             var wrapedResult = new HttpResponseMessage();
             this.SetHeaders(incomingResult, wrapedResult);
@@ -30,7 +30,7 @@ namespace ModelValidationDemo.ResponseHandler
             }
             else
             {
-                responsePackage.Result = ((System.Net.Http.ObjectContent)incomingResult.Content)?.Value;
+                responsePackage.Result = content;
             }
 
             wrapedResult.Content = new ObjectContent(typeof(ResponsePackage), responsePackage, GlobalConfiguration.Configuration.Formatters.JsonFormatter);

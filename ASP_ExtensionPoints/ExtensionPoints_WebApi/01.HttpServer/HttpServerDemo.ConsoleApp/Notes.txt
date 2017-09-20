@@ -1,0 +1,1 @@
+﻿Have to arrange the config files appropriately. The configuration section from the console application is used!!!

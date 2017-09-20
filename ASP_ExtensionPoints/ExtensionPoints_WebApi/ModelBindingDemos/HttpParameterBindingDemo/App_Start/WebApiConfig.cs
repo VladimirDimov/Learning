@@ -21,11 +21,11 @@
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.ParameterBindingRules.Insert(0, (paramDesc) =>
+            config.ParameterBindingRules.Insert(0, (parameterDescriptor) =>
             {
-                if (typeof(BaseModel).IsAssignableFrom(paramDesc.ParameterType))
+                if (typeof(BaseModel).IsAssignableFrom(parameterDescriptor.ParameterType))
                 {
-                    return new BaseModelParamBinding(paramDesc);
+                    return new BaseModelParamBinding(parameterDescriptor);
                 }
 
                 // any other types, let the default parameter binding handle

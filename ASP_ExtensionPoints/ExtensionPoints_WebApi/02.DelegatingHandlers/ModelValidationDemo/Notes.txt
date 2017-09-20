@@ -1,5 +1,6 @@
-﻿1.	Why we add the reponse wraping logic in a delgating handler and not in an action filter?
-2.	If an error prior the action execution occur (ex. Authentication failure) the 
-	OnActionExecuted method inside the action filter wont be executed.
-3. Why the ModelState validation logic is inside an ActionFilter?
-	Because we don't have a ModelState prior the model binding.
+﻿1.	Q: Why we add the reponse wraping logic in a delgating handler and not in an action filter?
+	A: If an error prior the action execution occur (ex. Authentication failure) the 
+	   OnActionExecuted method inside the action filter wont be executed.
+
+3.  Q: Why the ModelState validation logic is inside an ActionFilter?
+	A:   Because we don't have a ModelState prior the model binding.

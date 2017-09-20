@@ -8,11 +8,13 @@
     {
         public IHttpActionResult Get(string name, [Inject] IMyService service)
         {
-            return this.Ok(new
+            var result = new
             {
                 Name = name,
                 FromService = service.Get()
-            });
+            };
+
+            return this.Ok(result);
         }
     }
 }

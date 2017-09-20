@@ -1,6 +1,7 @@
 ﻿namespace ModelBinderDemo.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
     using System.Web.Http.ModelBinding;
     using ModelBinderDemo.App_Start;
@@ -14,9 +15,9 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Post([ModelBinder(typeof(MyModelBinder))] IEnumerable<IAnimal> animals)
+        public IHttpActionResult Post([ModelBinder(typeof(AnimalsModelBinder))] IEnumerable<IAnimal> animals)
         {
-            return this.Ok(animals);
+            return this.Ok(animals.Select(x => x.Speak()));
         }
     }
 }

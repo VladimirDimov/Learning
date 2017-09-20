@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServerDemo.ConsoleApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelValidationDemo", "02.DelegatingHandlers\ModelValidationDemo\ModelValidationDemo.csproj", "{ACC51BE5-8B57-406F-9092-26B87D394CC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomHttpMessageDemo", "03.RouteHandlers\CustomHttpMessage\CustomHttpMessageDemo.csproj", "{63587A66-8E4D-4845-9D3A-A0788179D616}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.1.CustomHttpMessageDemo", "03.RouteHandlers\CustomHttpMessage\3.1.CustomHttpMessageDemo.csproj", "{63587A66-8E4D-4845-9D3A-A0788179D616}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyResolverDemo", "04.ControllerDispatcher\AssemblyResolver\AssemblyResolverDemo\AssemblyResolverDemo.csproj", "{B25F8AE5-4ED1-489E-BF56-0ABAB195CA7B}"
 EndProject
@@ -33,17 +33,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.1.ControllerSelectorDemo"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.2.ControllerTypeResolverDemo", "04.ControllerDispatcher\ControllerTypeResolverDemo\4.2.ControllerTypeResolverDemo.csproj", "{419663E4-02CC-494D-B60F-FDB1D27E161E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionResultDemo", "ActionResultDemos\CustomActionResultDemo\ActionResultDemo.csproj", "{E40E81F2-29F1-4072-87BA-5E6379E997A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8.1.ActionResultDemo", "ActionResultDemos\CustomActionResultDemo\8.1.ActionResultDemo.csproj", "{E40E81F2-29F1-4072-87BA-5E6379E997A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvMediaTypeFormatterDemo", "ModelBindingDemos\CsvMediaTypeFormatterDemo\CsvMediaTypeFormatterDemo.csproj", "{77B492D5-1C7B-4B9A-A840-33E34A336808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.2.1.CsvMediaTypeFormatterDemo", "ModelBindingDemos\CsvMediaTypeFormatterDemo\7.2.1.CsvMediaTypeFormatterDemo.csproj", "{77B492D5-1C7B-4B9A-A840-33E34A336808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpParameterBindingDemo", "ModelBindingDemos\HttpParameterBindingDemo\HttpParameterBindingDemo.csproj", "{7FE1646D-E0B1-4F50-AFAA-019CEE7B2B2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.3.2.HttpParameterBindingDemo", "ModelBindingDemos\HttpParameterBindingDemo\7.3.2.HttpParameterBindingDemo.csproj", "{7FE1646D-E0B1-4F50-AFAA-019CEE7B2B2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaTypeFormattersDemo", "ModelBindingDemos\MediaTypeFormattersDemo\MediaTypeFormattersDemo.csproj", "{915AE6DD-FF51-4920-9152-4A0617FDF14B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.2.2.MediaTypeFormattersDemo", "ModelBindingDemos\MediaTypeFormattersDemo\7.2.2.MediaTypeFormattersDemo.csproj", "{915AE6DD-FF51-4920-9152-4A0617FDF14B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelBinderDemo", "ModelBindingDemos\ModelBinderDemo\ModelBinderDemo.csproj", "{D595AA38-CF73-4147-A729-A83E12E0424E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.1.1.ModelBinderDemo", "ModelBindingDemos\ModelBinderDemo\7.1.1.ModelBinderDemo.csproj", "{D595AA38-CF73-4147-A729-A83E12E0424E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedirectDemo", "03.RouteHandlers\RedirectDemo\RedirectDemo.csproj", "{C7199DB0-3016-4B37-8B32-A4682F26325F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.2.RedirectDemo", "03.RouteHandlers\RedirectDemo\3.2.RedirectDemo.csproj", "{C7199DB0-3016-4B37-8B32-A4682F26325F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.4.ControllerActivatorDemo", "04.ControllerDispatcher\ControllerActivatorDemo\4.4.ControllerActivatorDemo.csproj", "{AD05F0BC-FCDE-4215-AEDA-AEA5AA6FB9A7}"
 EndProject
@@ -61,17 +61,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomFIlterProviderDemo", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{6065C258-B0D1-4A37-92D2-AF25F278B406}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomValueProviderDemo", "ModelBindingDemos\CustomValueProviderDemo\CustomValueProviderDemo.csproj", "{C26BCC9F-4608-43FF-B803-60FD8191EB5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.2.1.CustomValueProviderDemo", "ModelBindingDemos\CustomValueProviderDemo\7.2.1.CustomValueProviderDemo.csproj", "{C26BCC9F-4608-43FF-B803-60FD8191EB5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInjectionDemo", "ModelBindingDemos\ActionInjectionDemo\ActionInjectionDemo.csproj", "{477742B5-7EE5-4C5D-B335-09B55A1942E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "7.3.1.ActionInjectionDemo", "ModelBindingDemos\ActionInjectionDemo\7.3.1.ActionInjectionDemo.csproj", "{477742B5-7EE5-4C5D-B335-09B55A1942E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoToControllerDispatcherDemo", "03.RouteHandlers\GoToControllerDispatcherDemo\GoToControllerDispatcherDemo.csproj", "{A1C5BFEB-2C74-44CD-8B67-3DD5B6DFC676}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.3.GoToControllerDispatcherDemo", "03.RouteHandlers\GoToControllerDispatcherDemo\3.3.GoToControllerDispatcherDemo.csproj", "{A1C5BFEB-2C74-44CD-8B67-3DD5B6DFC676}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormatterDemos", "FormatterDemos", "{9DE2B545-5C8B-4F89-8FB2-A5B891BCFEB6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.2.FormatterDemos", "7.2.FormatterDemos", "{9DE2B545-5C8B-4F89-8FB2-A5B891BCFEB6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BinderDemos", "BinderDemos", "{2755D180-5815-49F4-A143-61804B35BD19}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.1.BinderDemos", "7.1.BinderDemos", "{2755D180-5815-49F4-A143-61804B35BD19}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HttpParameterDemos", "HttpParameterDemos", "{95F6C9A0-A62C-4202-B577-6D15BA853F15}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7.3.HttpParameterDemos", "7.3.HttpParameterDemos", "{95F6C9A0-A62C-4202-B577-6D15BA853F15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "6.2.CustomActionSelectorDemo", "ActionSelectorAndActionInvokerDemos\CustomActionSelectorDemo\6.2.CustomActionSelectorDemo.csproj", "{8397D796-9C3F-4457-ABBC-8F4B2F9B9897}"
 EndProject

@@ -13,8 +13,7 @@
 
         public IHttpActionResult Post(CustomerOrder model)
         {
-
-            return this.Ok("Home POST");
+            return this.Ok(model);
         }
     }
 }

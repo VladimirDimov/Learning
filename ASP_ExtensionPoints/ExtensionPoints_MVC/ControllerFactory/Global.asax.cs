@@ -18,7 +18,7 @@ namespace ControllerFactory
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //ControllerBuilder.Current.SetControllerFactory(typeof(CustomControllerFactory));
+            ControllerBuilder.Current.SetControllerFactory(typeof(CustomControllerFactory));
         }
     }
 }

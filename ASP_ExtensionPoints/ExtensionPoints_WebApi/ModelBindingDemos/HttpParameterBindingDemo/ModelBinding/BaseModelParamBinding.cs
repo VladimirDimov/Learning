@@ -15,10 +15,6 @@
         public BaseModelParamBinding(HttpParameterDescriptor descriptor)
             : base(descriptor)
         {
-            // GetBinding() returns ModelBinderParameterBinding
-            //defaultFromBodyBinding = new ModelBinderAttribute().GetBinding(descriptor);
-
-            // GetBinding() returns FormatterParameterBinding
             defaultFromBodyBinding = new FromBodyAttribute().GetBinding(descriptor);
         }
 
