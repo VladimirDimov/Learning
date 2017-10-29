@@ -3,26 +3,15 @@
     <div class="card-panel">
       <h4 class="header2">Login</h4>
       <div class="row">
-        <form class="col s12">
+        <form class="col s12" [formGroup]="form">
           <div class="row">
           </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email5" type="email">
-              <label for="email" class="">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password6" type="password">
-              <label for="password" class="">Password</label>
-            </div>
-          </div>
-
+          <textbox-template [name]="'username'" [form]="form" [label]="'Username'" s=12></textbox-template>
+          <textbox-template [name]="'password'" [form]="form" [label]="'Password'" s=12 type="password"></textbox-template>
           <div class="row">
             <div class="row">
               <div class="input-field col s12">
-                <button class="btn cyan waves-effect waves-light right" type="submit" name="action">Login
+                <button class="btn cyan waves-effect waves-light right" type="submit" (click)="submit(this.form.value)">Login
                   <i class="mdi-content-send right"></i>
                 </button>
               </div>

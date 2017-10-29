@@ -9,9 +9,9 @@
 
   <!-- Required Validation Message-->
   <div [hidden]="!(this.control != null &&
-                  this.control.errors != null &&
-                  !this.control.pristine &&
-                  this.control.errors.required)">
+                  this.control?.errors != null &&
+                  !this.control?.pristine &&
+                  this.control?.errors?.required)">
     <div class="red-text">
       *The {{name}} is required!
     </div>

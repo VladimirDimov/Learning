@@ -24,7 +24,7 @@ export class TextboxTemplateComponent implements OnInit {
 
   @Input() form: FormGroup;
   @Input() name: string;
-  @Input() label: string = '';
+  @Input() label: string;
   @Input('type') iputType: string = 'text';
   @Input() s: number = 6;
 

@@ -2,6 +2,7 @@
 {
     using Microsoft.Owin.Security.OAuth;
     using System.Web.Http;
+    using System.Web.Http.Cors;
 
     public static class WebApiConfig
     {
@@ -11,6 +12,9 @@
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

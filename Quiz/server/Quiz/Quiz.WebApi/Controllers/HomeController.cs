@@ -1,8 +1,9 @@
 ﻿namespace Quiz.WebApi.Controllers
 {
     using System.Web.Http;
-    using System.Web.Mvc;
+    using System.Web.Http.Cors;
 
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class HomeController : ApiController
     {
         public IHttpActionResult Get()
