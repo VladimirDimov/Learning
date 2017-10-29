@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -7,21 +8,22 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder) {
+  constructor( @Inject(FormBuilder) fb: FormBuilder, private userService: UserService) {
 
   }
 
   registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl('', [Validators.required, Validators.minLength(2)])
+    firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    repeatPassword: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
   ngOnInit() {
-
   }
 
   onRegister() {
-    console.log(this.registerForm);
-    console.log(this.registerForm.controls.firstName.errors);
-    console.log(this.registerForm.controls.firstName.pristine);
+    let model = this.registerForm.value;
   }
 }

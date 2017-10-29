@@ -1,0 +1,54 @@
+<div class="input-field col s{{s}}" [formGroup]="form" *ngIf="isFormField">
+  <input 
+    formControlName="{{this.name}}" 
+    id="fm_{{name}}" 
+    type="{{iputType}}" 
+    [(ngModel)]="value">
+
+  <label for="fm_{{name}}">{{label}}</label>
+
+  <!-- Required Validation Message-->
+  <div [hidden]="!(this.control != null &&
+                  this.control.errors != null &&
+                  !this.control.pristine &&
+                  this.control.errors.required)">
+    <div class="red-text">
+      *The {{name}} is required!
+    </div>
+  </div>
+
+  <!-- Email Validation Message-->
+  <div [hidden]="!(this.control != null &&
+  this.control.errors != null &&
+  !this.control.pristine &&
+  this.control.errors.email)">
+    <div class="red-text">
+      *Invalid email format!
+    </div>
+  </div>
+
+  <!-- Min length validation message -->
+  <div [hidden]="!(this.control != null &&
+this.control.errors != null &&
+!this.control.pristine &&
+this.control.errors?.minlength)">
+    <div class="red-text">
+      *The {{label}} must be at least {{this.control.errors?.minlength?.requiredLength}} but it is {{this.control.errors?.minlength?.actualLength}}!
+    </div>
+  </div>
+
+  <!-- Max length validation message -->
+  <div [hidden]="!(this.control != null &&
+this.control.errors != null &&
+!this.control.pristine &&
+this.control.errors.maxlength)">
+    <div class="red-text">
+      *Invalid max length!
+    </div>
+  </div>
+</div>
+
+<div class="input-field col s{{s}}" *ngIf="!isFormField">
+  <input id="fm_{{name}}" type="{{iputType}}" [(ngModel)]="value">
+  <label for="fm_{{name}}">{{label}}</label>
+</div>

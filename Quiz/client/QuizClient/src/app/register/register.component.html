@@ -4,34 +4,12 @@
       <h4 class="header2">Register</h4>
       <div class="row">
         <form class="col s12" [formGroup]="registerForm">
-          <div class="row" >
-            <div class="input-field col s6">
-              <input formControlName="firstName" id="first_name" type="text">
-              <label for="first_name">First Name</label>
-              <div [hidden]="this.registerForm.controls.firstName.valid || this.registerForm.controls.firstName.pristine">
-                <div class="red-text" [hidden]="!this.registerForm.controls.firstName.errors.required">
-                  *The first name is required!
-                </div>
-              </div>
-            </div>
-
-            <div class="input-field col s6">
-              <input id="last_name" type="text">
-              <label for="last_name">Last Name</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="email5" type="email">
-              <label for="email" class="">Email</label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="password6" type="password">
-              <label for="password" class="">Password</label>
-            </div>
-          </div>
+          <textbox-template [name]="'firstName'" [form]="registerForm" [label]="'First Name'"></textbox-template>
+          <textbox-template [name]="'lastName'" [form]="registerForm" [label]="'Last Name'" s=6></textbox-template>
+          <textbox-template [name]="'email'" [form]="registerForm" [label]="'Email'" type="email" s="12">
+          </textbox-template>
+          <textbox-template [name]="'password'" [form]="registerForm" [label]="'Password'" s=12 type="password"></textbox-template>
+          <textbox-template [name]="'repeatPassword'" [form]="registerForm" [label]="'Repeat Password'" s=12 type="password"></textbox-template>
 
           <div class="row">
             <div class="row">
@@ -42,10 +20,9 @@
               </div>
             </div>
           </div>
+
         </form>
       </div>
     </div>
   </div>
 </div>
-
-{{registerForm.value}}
