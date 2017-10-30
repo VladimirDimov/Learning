@@ -4,6 +4,7 @@
     using System.Web.Http.Cors;
 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize()]
     public class HomeController : ApiController
     {
         public IHttpActionResult Get()
