@@ -12,8 +12,8 @@
         <a routerLink="{{LOGIN_ROUTE}}" routerLinkActive="active" *ngIf="!isAuthenticated">Login</a>
       </li>
       <li>
-          <a (click)="onSignOut()" routerLinkActive="active" *ngIf="isAuthenticated">Sign Out</a>
-        </li>
+        <a (click)="onSignOut()" routerLinkActive="active" *ngIf="isAuthenticated">Sign Out</a>
+      </li>
     </ul>
     <ul class="side-nav" id="mobile-demo">
       <li>
@@ -29,11 +29,11 @@
   </div>
   <div class="nav-content">
     <ul class="tabs tabs-transparent">
-      <li class="tab">
+      <li class="tab" *ngIf="isAuthenticated">
         <a routerLink="{{HOME_ROUTE}}" routerLinkActive="active">Home</a>
       </li>
-      <li class="tab">
-        <a class="active" href="#test2">Test 2</a>
+      <li class="tab" *ngIf="isAuthenticated">
+        <a routerLink="{{CREATE_QUIZ_ROUTE}}" routerLinkActive="active">Create Quiz</a>
       </li>
       <li class="tab disabled">
         <a href="#test3">Disabled Tab</a>

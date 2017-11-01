@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from '../common/routes'
+import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, CREATE_QUIZ_ROUTE } from '../common/routes'
 import { CookieService } from 'angular2-cookie/core';
 import { Router } from '@angular/router';
 import { SharedService } from '../common/shared.service';
@@ -20,7 +20,6 @@ export class NavbarComponent implements OnInit {
     private sharedService: SharedService) { }
 
   ngOnInit() {
-
   }
 
   @Input() isAuthenticated: boolean;
@@ -28,8 +27,7 @@ export class NavbarComponent implements OnInit {
   HOME_ROUTE = HOME_ROUTE;
   LOGIN_ROUTE = LOGIN_ROUTE;
   REGISTER_ROUTE = REGISTER_ROUTE;
-
-  @Output() onLogInOutEmitter = new EventEmitter();
+  CREATE_QUIZ_ROUTE = CREATE_QUIZ_ROUTE;
 
   onSignOut() {
     this.cookieService.remove(ACCESSS_TOKEN_COOKIE);

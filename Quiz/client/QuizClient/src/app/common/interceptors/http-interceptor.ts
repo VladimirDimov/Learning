@@ -9,11 +9,9 @@ export class NoopInterceptor implements HttpInterceptor {
     constructor(private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        debugger;
         var observable = next.handle(req);
 
         observable.subscribe(res => res, err => {
-            debugger;
             if (err.status === 401) {
                 this.router.navigateByUrl(LOGIN_ROUTE);
             }

@@ -1,0 +1,41 @@
+﻿<table id="SearchResultTable" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Town</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Town</th>
+        </tr>
+    </tfoot>
+</table>
+
+@section Scripts {
+    <script>
+        var table = $('#SearchResultTable').DataTable({
+            "proccessing": true,
+            "serverSide": true,
+            "ajax": {
+                url: "@Url.Action("GetData", "Home")",
+                type: 'POST'
+            },
+            "language": {
+                "search": "",
+                "searchPlaceholder": "Search..."
+            },
+           "columns": [
+               { "data": "Id", "name": "IdName" },
+               { "data": "Name" },
+               { "data": "Age", "orderData": [2, 0] },
+               { "data": "Town" }
+            ]
+        });
+    </script>
+}

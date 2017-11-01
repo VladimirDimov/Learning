@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.homeService.get().subscribe(
       res => {
-        debugger;
         this.content = res
       },
       err => console.log(err)

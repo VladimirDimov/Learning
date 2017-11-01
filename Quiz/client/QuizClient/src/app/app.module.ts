@@ -19,6 +19,7 @@ import { SharedService } from './common/shared.service';
 import { HomeService } from './home/home.service';
 import { HttpRequester } from './common/http-requester';
 import { NoopInterceptor } from './common/interceptors/http-interceptor';
+import { CreateQuizComponent } from './create-quiz/create-quiz.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NoopInterceptor } from './common/interceptors/http-interceptor';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    TextboxTemplateComponent
+    TextboxTemplateComponent,
+    CreateQuizComponent
   ],
   imports: [
     FormsModule,
