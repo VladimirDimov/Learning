@@ -83,9 +83,12 @@
                 var match = Regex.Match(key, DirectionPattern);
                 if (match.Success)
                 {
+                    var index = int.Parse(match.Groups[1].Value);
+                    var columnKey = $"order[{index}][column]";
+
                     orders.Add(new Order
                     {
-                        column = int.Parse(match.Groups[1].Value),
+                        column = int.Parse(form[columnKey]),
                         dir = form[key]
                     });
                 }

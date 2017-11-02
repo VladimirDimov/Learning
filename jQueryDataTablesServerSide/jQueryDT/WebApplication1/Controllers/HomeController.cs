@@ -20,6 +20,7 @@ namespace WebApplication1.Controllers
         public ActionResult GetData()
         {
             peopleCollection.Add(new Person { Age = 50, Id = 1001, Name = "asdfdsa", Town = ".[;,efkjmj" });
+
             return this.View(peopleCollection.AsQueryable().OrderBy(x => x.Age));
         }
     }

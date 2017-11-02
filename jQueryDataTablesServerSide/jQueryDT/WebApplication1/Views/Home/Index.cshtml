@@ -5,6 +5,7 @@
             <th>Name</th>
             <th>Age</th>
             <th>Town</th>
+            <th>Starting Date</th>
         </tr>
     </thead>
     <tfoot>
@@ -12,7 +13,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Age</th>
-            <th>Town</th>
+            <th>Starting Date</th>
         </tr>
     </tfoot>
 </table>
@@ -33,9 +34,24 @@
            "columns": [
                { "data": "Id", "name": "IdName" },
                { "data": "Name" },
-               { "data": "Age", "orderData": [0, 2] },
-               { "data": "Town" }
-            ]
+               { "data": "Age", "orderData": [2,4] },
+               { "data": "Town" },
+               {"data":  "StartingDate" }
+            ],
+           "columnDefs": [
+               {
+                   // The `data` parameter refers to the data for the cell (defined by the
+                   // `data` option, which defaults to the column being worked with, in
+                   // this case `data: 0`.
+                   "render": function (data, type, row) {
+                       date = new Date(parseInt(row.StartingDate.replace("/Date(", "").replace(")/", ""), 10));
+
+                       return date.toLocaleDateString();
+                   },
+                   "targets": 4
+               },
+               { "visible": true, "targets": [4] }
+           ]
         });
     </script>
 }

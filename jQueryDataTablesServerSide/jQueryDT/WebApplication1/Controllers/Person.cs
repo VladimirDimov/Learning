@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.Controllers
+﻿using System;
+
+namespace WebApplication1.Controllers
 {
     public class Person
     {
@@ -9,5 +11,7 @@
         public int Age { get; internal set; }
 
         public string Town { get; internal set; }
+
+        public DateTime StartingDate { get; internal set; }
     }
 }
