@@ -67,11 +67,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AjaxModels.cs" />
-    <Compile Include="DataProcessing\CommonFilter.cs" />
+    <Compile Include="DataProcessing\FilterDataProcessor.cs" />
+    <Compile Include="DataProcessing\DataProcessChain.cs" />
     <Compile Include="DataProcessing\IDataProcess.cs" />
-    <Compile Include="DataProcessing\OrderProcessor.cs" />
+    <Compile Include="DataProcessing\IDataProcessChain.cs" />
+    <Compile Include="DataProcessing\OrderDataProcessor.cs" />
+    <Compile Include="DataProcessing\PagingDataProcessor.cs" />
+    <Compile Include="GlobalConstants.cs" />
+    <Compile Include="ModelBinders\FormModelBinder.cs" />
     <Compile Include="JQDataTableAttribute.cs" />
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\DataTableAjaxPostModel.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

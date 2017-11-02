@@ -1,12 +1,15 @@
 ﻿namespace JQDT.DataProcessing
 {
+    using JQDT.Models;
     using System;
     using System.Linq;
     using System.Linq.Expressions;
 
-    internal class OrderProcessor : IDataProcess
+    internal class OrderDataProcessor : IDataProcess
     {
-        public static IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessedData { get; set; }
+
+        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
         {
             var modelType = data.First().GetType(); // TODO: Improve this !!!
             IQueryable<object> orderedData = data.Select(x => x);
@@ -19,7 +22,9 @@
 
                 var lambdaExpr = OrderByExpression(propType, isAsc, isFirst);
                 var propertySelectExpr = GetPropertySelectExpression(modelType, colName);
-                orderedData = (IQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr);
+                orderedData = isFirst ?
+                            (IQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr) :
+                            (IOrderedQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr);
 
                 isFirst = false;
             }
@@ -27,7 +32,7 @@
             return orderedData;
         }
 
-        private static LambdaExpression GetPropertySelectExpression(Type modelType, string propertyName)
+        private LambdaExpression GetPropertySelectExpression(Type modelType, string propertyName)
         {
             // x
             ParameterExpression xExpr = Expression.Parameter(typeof(object), "x");
@@ -41,11 +46,11 @@
             return lambda;
         }
 
-        private static LambdaExpression OrderByExpression(Type propType, bool isAsending, bool isFirst)
+        private LambdaExpression OrderByExpression(Type propType, bool isAsending, bool isFirst)
         {
             // data, selector => data.OrderBy(selector)
             // data
-            var dataType = typeof(IQueryable<>).MakeGenericType(typeof(object));
+            var dataType = (isFirst ? typeof(IQueryable<>) : typeof(IOrderedQueryable<>)).MakeGenericType(typeof(object));
             var dataExpr = Expression.Parameter(dataType, "x");
             // selector
             var funcGenericType = typeof(Func<,>).MakeGenericType(typeof(object), propType);

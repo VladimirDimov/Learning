@@ -1,13 +1,16 @@
 ﻿namespace JQDT.DataProcessing
 {
+    using JQDT.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
-    internal class CommonFilter : IDataProcess
+    internal class FilterDataProcessor : IDataProcess
     {
-        public static IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessedData { get; set; }
+
+        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
         {
             if (string.IsNullOrWhiteSpace(filterModel.search.value))
             {
@@ -16,10 +19,11 @@
 
             var expr = BuildExpression(data.GetType().GetGenericArguments().First(), filterModel.search.value);
             data = data.Where(expr);
+
             return data;
         }
 
-        private static Expression<Func<dynamic, bool>> BuildExpression(Type modelType, string search)
+        private Expression<Func<dynamic, bool>> BuildExpression(Type modelType, string search)
         {
             // x
             var modelParamExpr = Expression.Parameter(typeof(object), "model");
@@ -39,7 +43,7 @@
             return (Expression<Func<dynamic, bool>>)lambda;
         }
 
-        private static Expression GetOrExpr(List<MethodCallExpression> containExpressionCollection)
+        private Expression GetOrExpr(List<MethodCallExpression> containExpressionCollection)
         {
             var numberOfExpressions = containExpressionCollection.Count;
             var counter = 0;

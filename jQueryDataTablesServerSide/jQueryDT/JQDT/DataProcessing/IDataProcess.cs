@@ -1,7 +1,12 @@
-﻿namespace JQDT.DataProcessing
+﻿using JQDT.Models;
+using System.Linq;
+
+namespace JQDT.DataProcessing
 {
     internal interface IDataProcess
     {
-        // TODO: Define the ProcessData method in this interface
+        IQueryable<object> ProcessedData { get; set; }
+
+        IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel);
     }
 }
