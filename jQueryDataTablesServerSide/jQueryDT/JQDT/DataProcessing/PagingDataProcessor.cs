@@ -7,11 +7,11 @@
     {
         public IQueryable<object> ProcessedData { get; set; }
 
-        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessData(IQueryable<object> data, RequestInfoModel requestInfoModel)
         {
             var pagedData = data
-                .Skip(filterModel.start)
-                .Take(filterModel.length);
+                .Skip(requestInfoModel.TableParameters.start)
+                .Take(requestInfoModel.TableParameters.length);
 
             return pagedData;
         }

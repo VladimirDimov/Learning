@@ -31,7 +31,7 @@ namespace JQDT.DataProcessing
             }
         }
 
-        public IQueryable<object> ProcessedData { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public IQueryable<object> ProcessedData { get; set; }
 
         public void AddDataProcessor(IDataProcess dataProcessor)
         {
@@ -43,16 +43,18 @@ namespace JQDT.DataProcessing
             this.intermidiateResults.Add(key, value);
         }
 
-        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessData(IQueryable<object> data, RequestInfoModel requestInfoModel)
         {
             var currentDataState = data;
 
             foreach (var dataProcessor in this.dataProcessors)
             {
-                var processedData = dataProcessor.ProcessData(currentDataState, filterModel);
+                var processedData = dataProcessor.ProcessData(currentDataState, requestInfoModel);
                 currentDataState = processedData;
                 dataProcessor.ProcessedData = processedData;
             }
+
+            this.ProcessedData = currentDataState;
 
             return currentDataState;
         }

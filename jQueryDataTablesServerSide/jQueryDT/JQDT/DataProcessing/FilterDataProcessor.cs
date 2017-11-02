@@ -10,14 +10,14 @@
     {
         public IQueryable<object> ProcessedData { get; set; }
 
-        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessData(IQueryable<object> data, RequestInfoModel requestInfoModel)
         {
-            if (string.IsNullOrWhiteSpace(filterModel.search.value))
+            if (string.IsNullOrWhiteSpace(requestInfoModel.TableParameters.search.value))
             {
                 return data.Select(x => x);
             }
 
-            var expr = BuildExpression(data.GetType().GetGenericArguments().First(), filterModel.search.value);
+            var expr = BuildExpression(data.GetType().GetGenericArguments().First(), requestInfoModel.TableParameters.search.value);
             data = data.Where(expr);
 
             return data;

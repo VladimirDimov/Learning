@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace JQDT.Models
+﻿namespace JQDT.Models
 {
+    using System.Collections.Generic;
+
     public class DataTableAjaxPostModel
     {
         // properties are not capital due to json mapping

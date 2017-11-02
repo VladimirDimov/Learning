@@ -17,9 +17,10 @@ namespace WebApplication1.Controllers
         }
 
         [JQDataTable]
-        public ActionResult GetData(DataTableAjaxPostModel model)
+        public ActionResult GetData()
         {
-            return this.View(peopleCollection.AsQueryable());
+            peopleCollection.Add(new Person { Age = 50, Id = 1001, Name = "asdfdsa", Town = ".[;,efkjmj" });
+            return this.View(peopleCollection.AsQueryable().OrderBy(x => x.Age));
         }
     }
 }

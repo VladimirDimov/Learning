@@ -3,12 +3,13 @@
     using JQDT.Models;
     using System.Collections.Generic;
     using System.Collections.Specialized;
+    using System.Linq;
     using System.Text.RegularExpressions;
     using System.Web.Mvc;
 
     internal class FormModelBinder
     {
-        public DataTableAjaxPostModel BindModel(ActionExecutedContext filterContext)
+        public RequestInfoModel BindModel(ActionExecutedContext filterContext)
         {
             var controllerContext = filterContext.Controller.ControllerContext;
 
@@ -22,7 +23,7 @@
             int length = 0;
             int.TryParse(ajaxForm["length"], out length);
 
-            var model = new DataTableAjaxPostModel
+            var datatableModel = new DataTableAjaxPostModel
             {
                 start = start,
                 length = length,
@@ -34,7 +35,16 @@
                 columns = this.GetColumns(ajaxForm)
             };
 
-            return model;
+            var requestInfoModel = new RequestInfoModel
+            {
+                TableParameters = datatableModel,
+                Helpers = new RequestHelpers
+                {
+                    ModelType = ((ViewResultBase)filterContext.Result).Model.GetType().GenericTypeArguments.First()
+                }
+            };
+
+            return requestInfoModel;
         }
 
         private List<Column> GetColumns(NameValueCollection ajaxForm)

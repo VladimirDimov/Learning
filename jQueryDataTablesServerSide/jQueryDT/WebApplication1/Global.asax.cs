@@ -1,11 +1,11 @@
-﻿using System;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
-using WebApplication1.Controllers;
-
-namespace WebApplication1
+﻿namespace WebApplication1
 {
+    using System;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using WebApplication1.Controllers;
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -15,7 +15,7 @@ namespace WebApplication1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 5000; i++)
             {
                 HomeController.peopleCollection.Add(new Person
                 {

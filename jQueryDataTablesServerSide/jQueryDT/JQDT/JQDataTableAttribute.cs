@@ -21,7 +21,7 @@
 
             filterContext.Result = this.FormatResult(new
             {
-                draw = requestModel.draw,
+                draw = requestModel.TableParameters.draw,
                 recordsTotal = data.Count(),
                 recordsFiltered = this.GetRecordsFiltered(dataProcessChain),
                 data = processedData.ToList()

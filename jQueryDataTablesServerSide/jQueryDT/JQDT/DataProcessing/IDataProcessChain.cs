@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace JQDT.DataProcessing
+﻿namespace JQDT.DataProcessing
 {
+    using System.Collections.Generic;
+
     internal interface IDataProcessChain
     {
         IEnumerable<IDataProcess> DataProcessors { get; }

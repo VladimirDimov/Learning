@@ -7,6 +7,6 @@ namespace JQDT.DataProcessing
     {
         IQueryable<object> ProcessedData { get; set; }
 
-        IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel);
+        IQueryable<object> ProcessData(IQueryable<object> data, RequestInfoModel requestInfoModel);
     }
 }

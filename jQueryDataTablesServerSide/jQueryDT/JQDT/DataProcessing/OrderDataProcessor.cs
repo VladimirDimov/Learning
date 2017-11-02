@@ -9,22 +9,29 @@
     {
         public IQueryable<object> ProcessedData { get; set; }
 
-        public IQueryable<object> ProcessData(IQueryable<object> data, DataTableAjaxPostModel filterModel)
+        public IQueryable<object> ProcessData(IQueryable<object> data, RequestInfoModel requestInfoModel)
         {
-            var modelType = data.First().GetType(); // TODO: Improve this !!!
+            var genericType = data.GetType();
+            var modelType = requestInfoModel.Helpers.ModelType;
             IQueryable<object> orderedData = data.Select(x => x);
             var isFirst = true;
-            foreach (var orderColumn in filterModel.order)
+            foreach (var orderColumn in requestInfoModel.TableParameters.order)
             {
-                var colName = filterModel.columns[orderColumn.column].data;
+                var colName = requestInfoModel.TableParameters.columns[orderColumn.column].data;
                 var isAsc = orderColumn.dir == "asc";
                 var propType = modelType.GetProperty(colName).PropertyType;
 
                 var lambdaExpr = OrderByExpression(propType, isAsc, isFirst);
                 var propertySelectExpr = GetPropertySelectExpression(modelType, colName);
-                orderedData = isFirst ?
-                            (IQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr) :
-                            (IOrderedQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr);
+
+                if (isFirst)
+                {
+                    orderedData = (IQueryable<object>)lambdaExpr.Compile().DynamicInvoke(data, propertySelectExpr);
+                }
+                else
+                {
+                    orderedData = (IOrderedQueryable<object>)lambdaExpr.Compile().DynamicInvoke(orderedData, propertySelectExpr);
+                }
 
                 isFirst = false;
             }
