@@ -11,17 +11,20 @@ namespace WebApplication1.Controllers
     {
         public static List<Person> peopleCollection = new List<Person>();
 
-        public ActionResult Index(DataTableAjaxPostModel model)
+        public ActionResult Index()
         {
-            return this.View();
+            return this.SimpleExample();
+        }
+
+        public ActionResult SimpleExample()
+        {
+            return this.View(nameof(HomeController.SimpleExample));
         }
 
         [JQDataTable]
         public ActionResult GetData()
         {
-            peopleCollection.Add(new Person { Age = 50, Id = 1001, Name = "asdfdsa", Town = ".[;,efkjmj" });
-
-            return this.View(peopleCollection.AsQueryable().OrderBy(x => x.Age));
+            return this.View(peopleCollection.AsQueryable());
         }
     }
 }
