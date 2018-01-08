@@ -1,0 +1,2 @@
+﻿http://www.developerin.net/a/62-Code-Snippets/101-Global-Exception-Handling-in-WCF
+https://www.codeproject.com/Articles/899342/WCF-Global-Exception-Handling
