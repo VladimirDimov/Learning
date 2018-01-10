@@ -11,9 +11,11 @@
             new PersonModel { Id = 2, Name = "Misho", Age = 80 },
         };
 
-        public PersonModel GetById(int id)
+        public PersonModel GetById(string id)
         {
-            return people.FirstOrDefault(x => x.Id == id);
+            var idInt = int.Parse(id);
+
+            return people.FirstOrDefault(x => x.Id == idInt);
         }
     }
 }
