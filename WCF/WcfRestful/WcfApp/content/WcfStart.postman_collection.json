@@ -22,32 +22,22 @@
 					"enabled": true
 				}
 			],
-			"url": "http://localhost:51559/PeopleService.svc/Getbyid?id=1",
-			"queryParams": [
-				{
-					"key": "id",
-					"value": "1",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
+			"url": "http://localhost:51559/PeopleService.svc/Getbyid/1",
+			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "GET",
-			"collectionId": "c987ea8c-5a6d-922a-3d1a-3bc304bc0225",
 			"data": [],
 			"dataMode": "raw",
-			"name": "GetById",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1515590275801,
-			"version": 2,
-			"responses": [],
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
+			"time": 1515592542536,
+			"name": "GetById",
+			"description": "",
+			"collectionId": "c987ea8c-5a6d-922a-3d1a-3bc304bc0225",
+			"responses": [],
 			"rawModeData": ""
 		}
 	]
