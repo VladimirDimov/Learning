@@ -15,7 +15,7 @@
         //    BodyStyle = WebMessageBodyStyle.Wrapped,
         //    UriTemplate = "api/{id}")]
         [WebGet]
-        IEnumerable<PersonModel> Get(int id);
+        PersonModel GetById(int id);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -27,5 +27,7 @@
 
         [DataMember]
         public int Age { get; set; }
+
+        public int Id { get; set; }
     }
 }
