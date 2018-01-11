@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WcfAutofac.BL
+﻿namespace WcfAutofac.BL
 {
-    public class PeopleBl
+    public class SomeRepository : ISomeRepository
     {
         public string FormatValue(int value)
         {
