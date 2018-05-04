@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./main.js"></script>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+            width: 120px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        span {
+            padding: 5px;
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <table>
+            <thead>
+                <th>Name</th>
+                <th data-bind="click: orderByAge">Age</th>
+                <th>Load</th>
+            </thead>
+
+            <tbody data-bind="foreach: people">
+                <tr>
+                    <td data-bind="text: name"></td>
+                    <td data-bind="text: age"></td>
+                    <td>
+                        <button data-bind="click: $parent.form.loadForm.bind(this, $data)">Form</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form>
+            <div>
+                <span>Name:</span>
+                <input type="text" data-bind="value: form.currentContext().name" />
+            </div>
+
+            <div>
+                <span>Age:</span>
+                <input type="number" data-bind="value: form.currentContext().age" />
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
