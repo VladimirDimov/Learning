@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- <script src="./node_modules/bootstrap/dist/css/bootstrap.css"></script> -->
+    <script src="./node_modules/knockout.validation/dist/knockout.validation.js"></script>
+    <script src="./node_modules/knockout.validation/localization/en-US.js"></script>
+    <script src="./main.js"></script>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+            width: 120px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        span {
+            padding: 5px;
+            display: inline-block;
+            width: 100px;
+        }
+
+        .validationMessage {
+            display: block;
+            width: 100%;
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <form>
+            <div>
+                required:
+                <input type="text" data-bind="value: form().testRequired">
+                <!-- <p data-bind="validationMessage: testRequired"></p> -->
+            </div>
+
+            <div>
+                range:
+                <input type="number" data-bind="value: form().testRange">
+            </div>
+
+            <input type="submit" value="Send" data-bind="click: form().submit, enable: form.isValid">
+        </form>
+    </div>
+</body>
+
+</html>

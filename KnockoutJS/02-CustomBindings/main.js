@@ -1,3 +1,12 @@
+ko.bindingHandlers.color = {
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+        $(element).css('color', valueAccessor());
+    },
+    update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+        $(element).css('color', valueAccessor());
+    }
+}
+
 $(document).ready(function () {
     var people = [
         { name: ko.observable("name 1"), age: ko.observable(102) },
@@ -8,22 +17,8 @@ $(document).ready(function () {
 
     var Model = function () {
         var self = this;
-        self.people = ko.observableArray(people);
-        self.orderByAge = function () {
-            self.people.sort(function (a, b) {
-                if (a.age > b.age) return 1;
-                if (a.age < b.age) return -1;
-                return 0;
-            });
-        };
 
-        self.form = {
-            currentContext: ko.observable({age:-1}),
-
-            loadForm: function (data) {
-                self.form.currentContext(data);
-            }
-        };
+        self.red = 'red';
 
         return self;
     };

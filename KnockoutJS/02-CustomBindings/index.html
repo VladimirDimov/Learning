@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./node_modules/knockout/build/output/knockout-latest.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./main.js"></script>
+    <style>
+        th,
+        td {
+            border: 1px solid black;
+            width: 120px;
+            text-align: center;
+            padding: 5px;
+        }
+
+        span {
+            padding: 5px;
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+       <span data-bind="color: 'red'">This is in red!</span>
+       <span  data-bind="color: 'blue'">This is in blue!</span>
+    </div>
+</body>
+
+</html>

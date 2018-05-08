@@ -46,15 +46,15 @@
             </tbody>
         </table>
 
-        <form>
+        <form data-bind="with: form.currentContext">
             <div>
                 <span>Name:</span>
-                <input type="text" data-bind="value: form.currentContext().name" />
+                <input type="text" data-bind="value: name" />
             </div>
 
             <div>
                 <span>Age:</span>
-                <input type="number" data-bind="value: form.currentContext().age" />
+                <input type="number" data-bind="value: age" />
             </div>
         </form>
     </div>
