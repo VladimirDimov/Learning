@@ -20,15 +20,15 @@ $(document).ready(function () {
         };
 
         function submit(scope) {
-            for(var item in scope.form()){
-                if(scope.form()[item].valueHasMutated) {
+            for (var item in scope.form()) {
+                if (scope.form()[item].valueHasMutated) {
                     scope.form()[item].valueHasMutated();
                 }
 
                 console.log(item);
             }
 
-            if(!scope.form().isValid) {
+            if (!scope.form().isValid) {
                 console.log(scope.form.errors());
                 return;
             }
@@ -38,10 +38,6 @@ $(document).ready(function () {
     };
 
     ko.validation.locale('en-US');
-    // ko.validation.configure({
-    //     insertMessages: true,
-    // });
-
     var model = document.getElementById('wrapper');
     var scope = new Model();
     ko.applyBindings(scope, model);
