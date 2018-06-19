@@ -1,0 +1,9 @@
+﻿@model object
+
+<span>@this.ViewData["question"]</span>
+<label class="radio-inline">
+    <input type="radio" name="@this.ViewData["name"]" data-bind="checked: @this.ViewData["name"], checkedValue: true">Yes
+</label>
+<label class="radio-inline">
+    <input type="radio" name="@this.ViewData["name"]" data-bind="checked: @this.ViewData["name"], checkedValue: false">No
+</label>

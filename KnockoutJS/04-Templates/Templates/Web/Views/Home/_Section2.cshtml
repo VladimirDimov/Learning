@@ -1,0 +1,127 @@
+﻿<h3>Section 2</h3>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+        <div data-bind="
+                 template: {
+                    name: 'tpl-dropdown',
+                    data: {
+                        label: 'Categories',
+                        id: 'categories',
+                        options: categories,
+                        textProp: 'title',
+                        valueProp: 'id',
+                        value: selectedCountryId
+                    }
+                 }"></div>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+    </div>
+</div>
+<div class="form-group">
+    <div data-bind="
+                template: {
+                    name: 'tpl-checkbox',
+                    data: {
+                        label: 'Check me out',
+                        value: checked
+                    }
+                }
+             "></div>
+    <p data-bind="text: checked"></p>
+</div>
+<div class="form-group">
+    <div data-bind="
+                template: {
+                    name: 'tpl-yesno',
+                    data: {
+                        text: 'Some question?',
+                        value: questionResult1,
+                        id: 'yesno-1'
+                    }
+                }"></div>
+    <p data-bind="text: questionResult1"></p>
+    <div data-bind="
+                template: {
+                    name: 'tpl-yesno',
+                    data: {
+                        text: 'Some question?',
+                        value: questionResult1,
+                        id: 'yesno-2'
+                    }
+                }"></div>
+    <p data-bind="text: questionResult1"></p>
+    <div data-bind="
+                template: {
+                    name: 'tpl-yesno',
+                    data: {
+                        text: 'Some question?',
+                        value: questionResult2,
+                        id: 'yesno-3'
+                    }
+                }"></div>
+    <p data-bind="text: questionResult2"></p>
+
+</div>
+
+<div class="form-group">
+    <div data-bind="
+             template: {
+                name: 'tpl-radioList-vertical',
+                data: {
+                    id: 'animals',
+                    options: animals,
+                    textProp: 'name',
+                    valueProp: 'type',
+                    value: selectedAnimal
+                }
+             }"></div>
+
+</div>
+
+<div class="form-group">
+    <div data-bind="
+             template: {
+                name: 'tpl-textArea',
+                data: {
+                    id: 'area',
+                    label: 'Example Area',
+                    text: textArea,
+                    rows: 5
+                }
+             }"></div>
+
+</div>
+
+<div class="form-group">
+    <div data-bind="
+             template: {
+                name: 'tpl-radioList-inline',
+                data: {
+                    id: 'numberss',
+                    options: numbers,
+                    textProp: 'name',
+                    valueProp: 'number',
+                    value: selectedNumber
+                }
+             }"></div>
+
+</div>
+<p data-bind="text: selectedNumber"></p>
+
+<div data-bind="
+             template: {
+                name: 'tpl-checkboxlist-multi-vert',
+                data: {
+                    id: 'order-food',
+                    options: order,
+                    textProp: 'name',
+                    valueProp: 'id',
+                    value: selectedOrder
+                }
+             }"></div>

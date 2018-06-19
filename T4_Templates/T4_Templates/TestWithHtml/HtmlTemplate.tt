@@ -1,0 +1,9 @@
+﻿<#@ template language="HTML" #>
+<#@ parameter type="TestWithHtml.Person" name="person" #>
+<html><body>  
+ The date and time now is: <#= DateTime.Now #>  
+ <p>Name: <#= person.Name #></p>
+ <p>Age: <#= person.Age #></p>
+</body></html>
+</html>
+

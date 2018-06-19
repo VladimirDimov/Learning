@@ -1,0 +1,120 @@
+﻿<!-- EMAIL -->
+<script type="text/html" id="tpl-email">
+    <label data-bind="attr: {for: id}">Email</label>
+    <input type="email"
+           class="form-control"
+           data-bind="attr:{id: id, placeholder: 'Email'}, value: value"/>
+</script>
+<!-- EMAIL -->
+<!-- TEXT -->
+<script type="text/html" id="tpl-text">
+    <label data-bind="attr: {for: id}, text: label"></label>
+    <input type="text"
+           class="form-control"
+           data-bind="attr:{id: id, placeholder: 'Placeholder'}, value: value"/>
+</script>
+<!-- TEXT -->
+<!-- DROPDOWN -->
+<script type="text/html" id="tpl-dropdown">
+    <label data-bind="attr: {for: id}, text: label"></label>
+    <select data-bind="attr: {id: id}" class="form-control">
+        <!-- ko foreach: options -->
+        <option data-bind="text: $rawData[$parent.textProp], attr: {value: $rawData[$parent.valueProp]}, bindDropdown"></option>
+        <!-- /ko -->
+    </select>
+</script>
+<!-- DROPDOWN -->
+<!-- YESNO -->
+<script type="text/html" id="tpl-yesno">
+    <div class="row">
+        <div class="form-check-label col-md-9"
+             data-bind="text: text"></div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-1">
+            <input class="form-check-input"
+                   type="radio"
+                   data-bind="
+                        bindYesNo: {target: value, value: true},
+                        attr: {name: id, id: id + '_yes'}"/>
+
+            <label class="form-check-label" data-bind="attr:{for: id + '_yes'}">Yes</label>
+        </div>
+
+        <div class="col-md-1">
+            <input class="form-check-input"
+                   type="radio"
+                   data-bind="
+                        bindYesNo: {target: value, value: false},
+                        attr: {name: id, id: id + '_no'}"/>
+
+            <label class="form-check-label" data-bind="attr:{for: id + '_no'}">No</label>
+        </div>
+    </div>
+</script>
+<!-- YESNO -->
+<!-- CHECKBOX -->
+<script type="text/html" id="tpl-checkbox">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" data-bind="checked: value"/>
+        <label class="form-check-label" for="gridCheck" data-bind="text: label"></label>
+    </div>
+</script>
+<!-- CHECKBOX -->
+<!-- RADIO-VERTICAL -->
+<script type="text/html" id="tpl-radioList-vertical">
+    <!-- ko foreach: options -->
+    <div class="form-check">
+        <input class="form-check-input"
+               type="radio"
+               data-bind="value: $rawData[$parent.valueProp],
+                          attr: { id: $parent.id + $index(), name: $parent.id },
+                          bindRadioList: {target: $parent.value, value: ko.unwrap($rawData[$parent.valueProp])}"/>
+        <label class="form-check-label"
+               data-bind="
+                            text: $rawData[$parent.textProp],
+                            attr: { for: $parent.id + $index() }"></label>
+    </div>
+    <!-- /ko -->
+</script>
+<!-- RADIO-VERTICAL -->
+<!-- RADIO-INLINE -->
+<script type="text/html" id="tpl-radioList-inline">
+    <!-- ko foreach: options -->
+    <div class="form-check form-check-inline">
+        <input class="form-check-input"
+               type="radio"
+               data-bind="value: $rawData[$parent.valueProp],
+                          attr: { id: $parent.id + $index(), name: $parent.id },
+                          bindRadioList: {target: $parent.value, value: ko.unwrap($rawData[$parent.valueProp])}"/>
+        <label class="form-check-label"
+               data-bind="text: $rawData[$parent.textProp],
+                            attr: { for: $parent.id + $index() }"></label>
+    </div>
+    <!-- /ko -->
+</script>
+<!-- RADIO-INLINE -->
+<!-- TEXT_AREA -->
+<script type="text/html" id="tpl-textArea">
+    <div class="form-group">
+        <label data-bind="text: label, attr: {for: id}">
+        </label>
+        <textarea class="form-control"
+                  data-bind="text: text, attr: { id: id, rows: rows || '3' }">
+    </textarea>
+    </div>
+</script>
+<!-- TEXT_AREA -->
+<!-- CHECKBOX-LIST-VERTICAL -->
+<script type="text/html" id="tpl-checkboxlist-multi-vert">
+    <!-- ko foreach: options -->
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" data-bind="bindCheckboxlistMulti, attr: {id: $rawData[$parent.valueProp]}"/>
+        <label class="form-check-label" data-bind="text: $rawData[$parent.textProp],attr: {for: $rawData[$parent.valueProp]}">
+            Default checkbox
+        </label>
+    </div>
+    <!-- /ko -->
+</script>
+<!-- CHECKBOX-LIST-VERTICAL -->

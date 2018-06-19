@@ -1,0 +1,10 @@
+﻿@model object
+
+@{
+    var id = Guid.NewGuid();
+}
+
+<div>
+    <label for="@id">@this.ViewData["question"]</label>
+    <input id="@id" data-bind="@ViewData["dataBind"]" type="text"/>
+</div>

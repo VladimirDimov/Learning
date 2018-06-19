@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Application Form";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<form>
+    @Html.Partial("_Section1")
+    @Html.Partial("_Section2")
+
+    <p data-bind="text: 'Selected countryID: ' + selectedCountryId()"></p>
+    <p data-bind="text: selectedAnimal"></p>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+
+@Html.Partial("_Templates")
+
+@section scripts{
+
+    <script type="text/javascript">
+        function MyViewModel() {
+            this.email = ko.observable('test@adsd.com');
+            this.text = ko.observable('some default text');
+            this.categories = ko.observableArray([
+                { title: 'Argentina', id: 1 },
+                { title: 'Bulgaria', id: 2 },
+                { title: 'France', id: 3 },
+            ]);
+
+            this.questionResult1 = ko.observable(true);
+            this.questionResult2 = false;
+
+            this.checked = ko.observable(true);
+
+            this.animals = ko.observable([
+                { name: 'Tom', type: 'cat' },
+                { name: 'Guffy', type: 'dog' },
+                { name: 'Jerry', type: 'mouse' },
+            ]);
+
+            this.selectedCountryId = ko.observable('3');
+            this.selectedAnimal = ko.observable('dog');
+            this.textArea = ko.observable('Default text ...');
+            this.numbers = ko.observableArray([
+                { number: 1, name: 'one' },
+                { number: 2, name: 'two' },
+                { number: 300, name: 'three houndred' },
+            ]);
+            this.selectedNumber = ko.observable(2);
+            this.order = ko.observableArray([
+                { name: 'bob', id: 1 },
+                { name: 'leshta', id: 2 },
+                { name: 'sirene', id: 3 },
+            ]);
+            this.selectedOrder = ko.observableArray([2,3]);
+        }
+
+        ko.bindingHandlers.bindYesNo = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                element.checked = valueAccessor().value == ko.unwrap(ko.unwrap(viewModel).value);
+
+                $(element).on('change', function () {
+                    var newValue = ko.unwrap(ko.unwrap(valueAccessor()).value);
+                    if (ko.isObservable(viewModel.value)) {
+                        viewModel.value(newValue);
+                    } else {
+                        viewModel.value = newValue;
+                    }
+                });
+
+                if (ko.isObservable(viewModel.value)) {
+                    viewModel.value.subscribe(function (isChecked) {
+                        element.checked = isChecked == valueAccessor().value;
+                    });
+                }
+            }
+        };
+
+        ko.bindingHandlers.bindRadioList = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                $(element).on('change', function () {
+                    if (element.checked) {
+                        if (ko.isObservable(valueAccessor().target)) {
+                            valueAccessor().target(valueAccessor().value);
+                        } else {
+                            valueAccessor().target = valueAccessor().value;
+                        }
+                    }
+                });
+
+                if (ko.isObservable(valueAccessor().target)) {
+                    valueAccessor().target.subscribe(function (val) {
+                        if (valueAccessor().value === val) {
+                            element.checked = true;
+                        } else {
+                            element.checked = false;
+                        }
+                    });
+
+                    valueAccessor().target.valueHasMutated();
+                }
+            }
+        };
+
+        ko.bindingHandlers.bindDropdown = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                var defaultVal = ko.unwrap(bindingContext.$parent.value),
+                    valueProp = bindingContext.$parent.valueProp,
+                    currentItemVal = viewModel[valueProp];
+
+                if (defaultVal == currentItemVal) {
+                    element.selected = true;
+                } else {
+                    element.selected = false;
+                }
+
+                $(element).closest('select').on('change', function (e) {
+                    var newVal = $(e.target).val();
+                    if (ko.isObservable(bindingContext.$parent.value)) {
+                        bindingContext.$parent.value(newVal);
+                    }
+                });
+            }
+        };
+
+        ko.bindingHandlers.bindCheckboxlistMulti = {
+            init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+                if (!bindingContext.$parent.value) {
+                    return;
+                }
+
+                if (bindingContext.$parent.value.indexOf(bindingContext.$rawData[bindingContext.$parent.valueProp]) > -1) {
+                    element.checked = true;
+                }
+
+                $(element).on('change', function (e) {
+                    var $element = $(e.target),
+                        target = bindingContext.$parent.value,
+                        value = bindingContext.$rawData[bindingContext.$parent.valueProp];
+
+                    if (e.target.checked) {
+                        target.push(value);
+                    } else {
+                        removeIfContains(value, target);
+                    }
+                    console.log(target());
+                });
+
+                function removeIfContains(value, array) {
+                    var index = array.indexOf(value);
+                    if (index > -1) {
+                        array.splice(index, 1);
+                    }
+                }
+            }
+        }
+
+        var model = new MyViewModel()
+        ko.applyBindings(model);
+    </script>
+
+}
