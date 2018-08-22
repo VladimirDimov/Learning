@@ -1,0 +1,25 @@
+﻿@model  MVC.Models.FormModel
+
+<h1>Section 1</h1>
+@using (Ajax.BeginForm("SubmitForm", "Home", new { }, new AjaxOptions() { UpdateTargetId = "section" }))
+{
+    if (new int[] { 1, 2, 0 }.Contains(Model.FormTypeId))
+    {
+        <div>
+            Is Man: @Html.EditorFor(x => x.IsMan)
+        </div>
+    }
+
+    <div>
+        Name: @Html.EditorFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+
+    <div>
+        Age: @Html.EditorFor(x => x.Age)
+        @Html.ValidationMessageFor(x => x.Age)
+
+    </div>
+
+    <input type="submit" value="Submit" />
+}

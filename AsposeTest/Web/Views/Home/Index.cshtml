@@ -50,7 +50,7 @@
 
 @section scripts {
     <script>
-        function onBtnPrintClicked() {
+        function onBtnPrintClicked(th) {
             $.ajax({
                 url: '/home/RenderPdfTemplate',
                 success: function (res) {
@@ -60,8 +60,14 @@
             });
         }
 
+            function openTab(th)
+            {
+                window.open(th.name,'_blank');
+            }
+
         function onBtnPdfClicked() {
-            window.open('/home/getpdf');
+            window.open('/home/getpdf', '_blank');
+            window.navigator
         }
     </script>
 }
