@@ -1,0 +1,11 @@
+﻿-- test the stored procedure manually from sql management studio
+
+declare @tb dbo.PeopleList;
+
+insert into @tb (Name)
+values('asdsadad')
+
+
+EXEC dbo.AddPeople @People = @tb
+
+select * from People
